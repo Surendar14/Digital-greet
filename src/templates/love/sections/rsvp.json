@@ -1,0 +1,13 @@
+{
+  "id": "rsvp",
+  "type": "button",
+  "label": "A hidden CTA (flip enabled to true)",
+  "enabled": false,
+  "order": 16,
+  "animation": { "preset": "fadeUp" },
+  "content": {
+    "label": "Say it back",
+    "target": "#surprise",
+    "variant": "ghost"
+  }
+}

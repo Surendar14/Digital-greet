@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="2000" viewBox="0 0 1400 2000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d0916"/>
+      <stop offset="0.45" stop-color="#171022"/>
+      <stop offset="1" stop-color="#0a0811"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="0.25" cy="0.22" r="0.55">
+      <stop offset="0" stop-color="#e9b8a6" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#e9b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0.85" cy="0.6" r="0.5">
+      <stop offset="0" stop-color="#f4c9cb" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#f4c9cb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f8f4ef" stop-opacity="0.95"/>
+      <stop offset="0.7" stop-color="#e9b8a6" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#e9b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur30"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+  <rect width="1400" height="2000" fill="url(#bg)"/>
+  <rect width="1400" height="2000" fill="url(#g1)"/>
+  <rect width="1400" height="2000" fill="url(#g2)"/>
+  <circle cx="1050" cy="420" r="170" fill="url(#moon)" filter="url(#blur30)"/>
+  <g stroke="#f5d3c3" stroke-opacity="0.16" fill="none">
+    <path d="M0 1520 C 350 1450, 520 1600, 900 1520 S 1300 1550 1400 1480" stroke-width="1.5"/>
+    <path d="M0 1660 C 380 1590, 620 1720, 1000 1650 S 1250 1690 1400 1620" stroke-width="1.2"/>
+  </g>
+  <g fill="#f5d3c3">
+    <circle cx="220" cy="380" r="3" opacity="0.8"/><circle cx="1180" cy="260" r="2.2" opacity="0.7"/>
+    <circle cx="300" cy="900" r="2" opacity="0.6"/><circle cx="1250" cy="900" r="3.2" opacity="0.7"/>
+    <circle cx="700" cy="180" r="2.6" opacity="0.8"/><circle cx="150" cy="1300" r="2" opacity="0.5"/>
+    <circle cx="1300" cy="1400" r="2.4" opacity="0.6"/>
+  </g>
+  <path d="M0 1900 C 400 1820, 900 1860, 1400 1780 L1400 2000 L0 2000 Z" fill="#0b0812" opacity="0.55"/>
+</svg>

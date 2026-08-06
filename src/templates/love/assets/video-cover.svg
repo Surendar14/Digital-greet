@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#191021"/>
+      <stop offset="0.5" stop-color="#120c1c"/>
+      <stop offset="1" stop-color="#0b0811"/>
+    </linearGradient>
+    <radialGradient id="haze" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#e9b8a6" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#e9b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="v" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f8f4ef" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#e9b8a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#haze)"/>
+  <g fill="#f8f4ef" opacity="0.12">
+    <circle cx="300" cy="180" r="2"/><circle cx="760" cy="110" r="2.6"/><circle cx="1300" cy="240" r="2.2"/>
+    <circle cx="200" cy="780" r="2"/><circle cx="1450" cy="700" r="2.4"/>
+  </g>
+  <g transform="translate(800 470)">
+    <circle cx="0" cy="0" r="120" fill="url(#v)"/>
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#f5d3c3" stroke-width="1.5" stroke-opacity="0.5"/>
+    <path d="M-26 -8 L0 -46 L26 -8 L52 0 L26 8 L0 46 L-26 8 L-52 0 Z" fill="#f5d3c3" opacity="0.9"/>
+  </g>
+  <text x="800" y="860" text-anchor="middle" font-family="Georgia, serif" font-size="34" letter-spacing="12" fill="#f8f4ef" opacity="0.85">A LITTLE FILM OF US</text>
+</svg>

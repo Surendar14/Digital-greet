@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.46" r="0.75">
+      <stop offset="0" stop-color="#1a0f14"/>
+      <stop offset="0.55" stop-color="#12090d"/>
+      <stop offset="1" stop-color="#0a0508"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.44" r="0.55">
+      <stop offset="0" stop-color="#e9b8a6" stop-opacity="0.28"/>
+      <stop offset="0.7" stop-color="#e9b8a6" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#e9b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="heartFill" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#fbf6f1"/>
+      <stop offset="0.38" stop-color="#f5d3c3"/>
+      <stop offset="0.72" stop-color="#e9b8a6"/>
+      <stop offset="1" stop-color="#c98b7a"/>
+    </linearGradient>
+    <linearGradient id="heartShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a1210" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#2a1210" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="heartGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <rect width="900" height="900" fill="url(#halo)"/>
+
+  <circle cx="450" cy="430" r="215" fill="#e9b8a6" opacity="0.16" filter="url(#softShadow)"/>
+  <g filter="url(#heartGlow)">
+    <path
+      d="M 450 705 C 298 608 200 488 200 362 C 200 252 284 172 384 172 C 424 172 446 190 450 212 C 454 190 476 172 516 172 C 616 172 700 252 700 362 C 700 488 602 608 450 705 Z"
+      fill="url(#heartFill)"/>
+    <path
+      d="M 450 705 C 298 608 200 488 200 362 C 200 252 284 172 384 172 C 424 172 446 190 450 212 C 454 190 476 172 516 172 C 616 172 700 252 700 362 C 700 488 602 608 450 705 Z"
+      fill="url(#heartShade)"/>
+    <path d="M 262 330 C 258 262 318 196 386 194 C 358 208 338 238 332 272 C 320 282 288 300 262 330 Z" fill="#ffffff" opacity="0.35"/>
+    <path d="M 638 330 C 642 262 582 196 514 194 C 542 208 562 238 568 272 C 580 282 612 300 638 330 Z" fill="#ffffff" opacity="0.22"/>
+  </g>
+
+  <g fill="#f5d3c3">
+    <g opacity="0.9">
+      <path d="M 150 210 l 8 18 18 8 -18 8 -8 18 -8 -18 -18 -8 18 -8 Z" />
+      <path d="M 760 300 l 6 13 13 6 -13 6 -6 13 -6 -13 -13 -6 13 -6 Z" opacity="0.7"/>
+      <path d="M 700 650 l 5 11 11 5 -11 5 -5 11 -5 -11 -11 -5 11 -5 Z" opacity="0.75"/>
+      <path d="M 140 560 l 5 11 11 5 -11 5 -5 11 -5 -11 -11 -5 11 -5 Z" opacity="0.6"/>
+    </g>
+    <circle cx="205" cy="330" r="4" opacity="0.8"/>
+    <circle cx="720" cy="440" r="3" opacity="0.7"/>
+    <circle cx="655" cy="180" r="3.4" opacity="0.8"/>
+    <circle cx="250" cy="600" r="3" opacity="0.65"/>
+    <circle cx="450" cy="150" r="3.4" opacity="0.9"/>
+    <circle cx="560" cy="720" r="2.6" opacity="0.7"/>
+  </g>
+</svg>

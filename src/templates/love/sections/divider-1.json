@@ -1,0 +1,9 @@
+{
+  "id": "divider-1",
+  "type": "divider",
+  "enabled": true,
+  "order": 4,
+  "animation": { "preset": "fade", "duration": 0.8 },
+  "settings": { "variant": "ornament" },
+  "content": { "symbol": "✦" }
+}

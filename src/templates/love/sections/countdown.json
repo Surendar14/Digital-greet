@@ -1,0 +1,15 @@
+{
+  "id": "countdown",
+  "type": "countdown",
+  "label": "Countdown",
+  "enabled": true,
+  "order": 13,
+  "animation": { "preset": "fadeUp", "duration": 1 },
+  "content": {
+    "kicker": "time is a love language",
+    "title": "@countdown_title",
+    "subtitle": "@countdown_subtitle",
+    "target": "@event_date",
+    "label": "@countdown_label"
+  }
+}

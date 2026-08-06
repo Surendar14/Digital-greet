@@ -1,0 +1,23 @@
+{
+  "id": "footer",
+  "type": "footer",
+  "label": "Ending Message",
+  "enabled": true,
+  "order": 15,
+  "animation": { "preset": "fadeUp", "duration": 1.2 },
+  "style": {
+    "background": {
+      "image": "assets/backgrounds/rose-dusk.jpg",
+      "position": "50% 100%",
+      "opacity": 0.6
+    }
+  },
+  "content": {
+    "kicker": "@footer_kicker",
+    "message": "@closing_message",
+    "signature": "@sender_name",
+    "sender": "@sender_name",
+    "date": "@closing_date",
+    "note": "@footer_note"
+  }
+}

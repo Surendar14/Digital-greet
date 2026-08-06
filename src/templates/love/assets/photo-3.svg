@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="0" stop-color="#1f1528"/>
+      <stop offset="0.6" stop-color="#150f1e"/>
+      <stop offset="1" stop-color="#0b0812"/>
+    </radialGradient>
+    <radialGradient id="rose" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f4c9cb" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#f4c9cb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="petal" cx="0.5" cy="0.42" r="0.5">
+      <stop offset="0" stop-color="#f5d3c3"/>
+      <stop offset="1" stop-color="#c98b7a"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="600" cy="600" r="430" fill="url(#rose)"/>
+  <g transform="translate(600 600)">
+    <g transform="rotate(0)"><ellipse cx="0" cy="-210" rx="95" ry="175" fill="url(#petal)" opacity="0.95"/></g>
+    <g transform="rotate(72)"><ellipse cx="0" cy="-210" rx="95" ry="175" fill="url(#petal)" opacity="0.85"/></g>
+    <g transform="rotate(144)"><ellipse cx="0" cy="-210" rx="95" ry="175" fill="url(#petal)" opacity="0.75"/></g>
+    <g transform="rotate(216)"><ellipse cx="0" cy="-210" rx="95" ry="175" fill="url(#petal)" opacity="0.65"/></g>
+    <g transform="rotate(288)"><ellipse cx="0" cy="-210" rx="95" ry="175" fill="url(#petal)" opacity="0.9"/></g>
+    <circle cx="0" cy="0" r="80" fill="#120c18"/>
+  </g>
+  <text x="600" y="985" text-anchor="middle" font-family="Georgia, serif" font-size="30" letter-spacing="12" fill="#f5d3c3" opacity="0.85">SUNDAY</text>
+</svg>

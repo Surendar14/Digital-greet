@@ -1,0 +1,20 @@
+{
+  "id": "quote",
+  "type": "quote",
+  "label": "A quiet truth",
+  "enabled": true,
+  "order": 5,
+  "animation": { "preset": "zoom", "duration": 1.1 },
+  "style": {
+    "background": {
+      "image": "assets/backgrounds/rose-bokeh2.jpg",
+      "position": "15% 85%",
+      "opacity": 0.5
+    }
+  },
+  "content": {
+    "kicker": "@quote_kicker",
+    "quote": "@quote_text",
+    "source": "@quote_source"
+  }
+}

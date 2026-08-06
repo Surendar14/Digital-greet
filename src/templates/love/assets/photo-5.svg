@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e0b16"/>
+      <stop offset="1" stop-color="#1b1420"/>
+    </linearGradient>
+    <radialGradient id="deep" cx="0.5" cy="0.45" r="0.7">
+      <stop offset="0" stop-color="#5b6bb0" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#5b6bb0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rain" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#cfd8ff" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#cfd8ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#deep)"/>
+  <g stroke="url(#rain)" stroke-width="2">
+    <path d="M120 0 L90 340"/><path d="M260 0 L230 260"/>
+    <path d="M420 0 L396 380"/><path d="M560 0 L520 240"/>
+    <path d="M720 0 L688 330"/><path d="M860 0 L838 270"/>
+    <path d="M1000 0 L966 360"/><path d="M1130 0 L1102 300"/>
+  </g>
+  <circle cx="600" cy="520" r="150" fill="#f5d3c3" opacity="0.1"/>
+  <text x="600" y="330" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="66" fill="#f8f4ef" opacity="0.9">rain</text>
+  <text x="600" y="400" text-anchor="middle" font-family="Georgia, serif" font-size="26" letter-spacing="14" fill="#e9b8a6" opacity="0.85">AND NOWHERE TO BE</text>
+</svg>

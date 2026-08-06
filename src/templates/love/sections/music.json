@@ -1,0 +1,25 @@
+{
+  "id": "music",
+  "type": "music",
+  "label": "Music Player",
+  "enabled": true,
+  "order": 10,
+  "animation": { "preset": "fadeUp", "duration": 1 },
+  "style": {
+    "background": {
+      "image": "assets/backgrounds/rose-music.jpg",
+      "position": "50% 40%",
+      "opacity": 0.72,
+      "blur": 0,
+      "overlay": "rgba(10,5,8,0.55)"
+    }
+  },
+  "settings": { "volume": true },
+  "content": {
+    "kicker": "turn the lights low",
+    "title": "@music_title",
+    "note": "@music_note",
+    "trackTitle": "@music_meta.title",
+    "artist": "@music_meta.artist"
+  }
+}

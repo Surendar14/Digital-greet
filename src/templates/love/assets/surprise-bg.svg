@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0" stop-color="#1d1526"/>
+      <stop offset="0.6" stop-color="#140e1d"/>
+      <stop offset="1" stop-color="#0b0812"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#f4c9cb" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#f4c9cb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="h" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f5d3c3"/>
+      <stop offset="1" stop-color="#c98b7a"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <rect width="900" height="900" fill="url(#glow)"/>
+  <g transform="translate(450 430)">
+    <path d="M 0 60 C -150 40 -195 -70 -120 -140 C -55 -200 0 -160 0 -160 C 0 -160 55 -200 120 -140 C 195 -70 150 40 0 60 Z" fill="url(#h)" opacity="0.92"/>
+    <path d="M 0 60 C -150 40 -195 -70 -120 -140 C -100 -158 -80 -150 -70 -140 C -120 -90 -60 15 0 45 C 60 15 120 -90 70 -140 C 80 -150 100 -158 120 -140 C 195 -70 150 40 0 60 Z" fill="#170f20" opacity="0.55"/>
+  </g>
+  <g fill="#f5d3c3" opacity="0.8">
+    <circle cx="180" cy="300" r="4"/><circle cx="720" cy="260" r="3"/><circle cx="760" cy="620" r="3.6"/>
+    <circle cx="140" cy="640" r="2.6"/><circle cx="450" cy="180" r="2.4"/><circle cx="580" cy="760" r="2.2"/>
+  </g>
+  <text x="450" y="770" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="34" letter-spacing="4" fill="#f8f4ef" opacity="0.9">forever starts now</text>
+</svg>

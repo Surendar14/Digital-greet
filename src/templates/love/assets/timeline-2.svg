@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12101f"/>
+      <stop offset="1" stop-color="#0a0811"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="0.5" cy="0.3" r="0.5">
+      <stop offset="0" stop-color="#f8f4ef" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#e9b8a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <circle cx="650" cy="170" r="90" fill="url(#moon)"/>
+  <g fill="#f8f4ef" opacity="0.16">
+    <circle cx="140" cy="90" r="2"/><circle cx="420" cy="60" r="2.4"/><circle cx="800" cy="520" r="2"/>
+    <circle cx="180" cy="430" r="1.8"/>
+  </g>
+  <path d="M0 480 C 260 420, 420 520, 640 470 S 840 500 900 460 L900 600 L0 600 Z" fill="#131020" opacity="0.85"/>
+  <text x="450" y="520" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="26" letter-spacing="5" fill="#f5d3c3" opacity="0.9">the long night</text>
+</svg>

@@ -1,0 +1,105 @@
+{
+  "id": "love",
+  "name": "Love",
+  "version": "1.0.0",
+  "description": "A cinematic, mobile-first digital love letter — rose gold on midnight.",
+  "author": "Digital Greeting",
+  "theme": "love",
+  "mode": "dark",
+  "preview": "assets/preview.png",
+  "fields": {
+    "recipient_name": "Sarah",
+    "sender_name": "Alex",
+    "headline": "For you, who holds my heart",
+    "subtitle": "A small universe of moments we share — written here, for you.",
+    "welcome_kicker": "You have a letter",
+    "welcome_title": "A love letter, in the quiet",
+    "welcome_prompt": "Scroll gently. It was made only for you.",
+    "badge": "A little reminder, sometimes",
+
+    "story_title": "How we became us",
+    "story_paragraphs": [
+      "It began in an ordinary room, but nothing after that in me was ever ordinary. Not the way you said hello, not the pause before your laugh — and certainly not the quiet hours afterwards in which I wanted to tell you everything.",
+      "Since then, every everyday has earned its gold edge. The run you share, the books you never finish, the walk that always finds its way past your window. None of it is small. All of it is us.",
+      "You are the reason I fold the future like a love letter."
+    ],
+    "story_kicker": "once upon a run, really",
+    "story_signature": "— first days, remembered kindly",
+
+    "quote_kicker": "a quiet truth",
+    "quote_text": "I have loved you the way a candle loves the night it warms — without needing to be seen, and shining anyway.",
+    "quote_source": "written by me, for you",
+
+    "gallery_kicker": "kept close",
+    "gallery_title": "A little gallery of us",
+    "gallery_subtitle": "Tap any frame to fall into it.",
+    "photos": [
+      { "src": "assets/photo-1.svg", "caption": "Golden hour, the first time we noticed" },
+      { "src": "assets/photo-2.svg", "caption": "Your favourite kind of quiet" },
+      { "src": "assets/photo-3.svg", "caption": "A Sunday that felt like a holiday" },
+      { "src": "assets/photo-4.svg", "caption": "An ordinary street, made ours" },
+      { "src": "assets/photo-5.svg", "caption": "Rain — and nowhere we had to be" },
+      { "src": "assets/photo-6.svg", "caption": "The beginning of a long, lovely road" }
+    ],
+    "gallery_mode": "masonry",
+
+    "video_title": "Recent moments",
+    "video_subtitle": "The moving pictures",
+    "video_caption": "Replace this frame with your favourite clip of us.",
+    "video_poster": "assets/video-cover.svg",
+
+    "message_title": "A message, kept just for you",
+    "message_kicker": "read me slowly",
+    "special_message": [
+      "I have written this letter a thousand times and it never arrives the same way twice. The short version is: you make my favourite. You make the hard weeks softer, the good ones longer, and the silence kinder.",
+      "Whatever today is for you — loud, quiet, golden or hard — you are not carrying it alone. I will always look for you first in the room, and hold out my hand in the crowd."
+    ],
+
+    "music_meta": {
+      "title": "Our Song",
+      "artist": "a melody only you can hear",
+      "autoplay": true
+    },
+    "music_title": "The soundtrack",
+    "music_note": "It plays softly the whole way down the page — tap the note to start if your browser waits for you.",
+
+    "countdown_title": "Counting down to us",
+    "countdown_subtitle": "Because every second gets a title.",
+    "event_date": "2027-02-14T20:00:00",
+    "countdown_label": "until our day",
+
+    "reasons_kicker": "because",
+    "reasons_title": "Reasons I love you",
+    "reasons_subtitle": "The list is endless — these are the ones I wrote before you woke up.",
+    "reasons": [
+      { "title": "The way you listen", "text": "You don't just hear people. You understand them mid-sentence." },
+      { "title": "Your quiet courage", "text": "You make brave look like a kind decision." },
+      { "title": "Your laugh", "text": "It resets my entire nervous system, instantly." },
+      { "title": "The softness you keep", "text": "You hide it, but I always find it." },
+      { "title": "How you love", "text": "Like a language you were born fluent in." }
+    ],
+
+    "timeline_title": "A short timeline of us",
+    "timeline_subtitle": "Ordinary steps, extraordinary by the end.",
+    "timeline": [
+      { "date": "The very first day", "title": "The hello", "text": "Across a café table — same hopeless order, same wrong opinion.", "photo": "assets/timeline-1.svg" },
+      { "date": "The long night", "title": "The first real talk", "text": "We stayed past all our good hours and discussed everything that mattered.", "photo": "assets/timeline-2.svg" },
+      { "date": "The wrong turning", "title": "Our first adventure", "text": "A lost road, a ruined day, a view neither of us has ever forgotten.", "photo": "assets/timeline-3.svg" },
+      { "date": "Today and onward", "title": "Every day I choose you", "text": "And I would choose it again, in every universe that has a us in it." }
+    ],
+
+    "surprise_title": "Before you go",
+    "surprise_kicker": "one last thing",
+    "surprise_button": "Show me the surprise",
+    "surprise_after_title": "Forever starts now",
+    "surprise_message": "Will you keep writing this story with me? Every ordinary miracle, every chapter. I love you — today, tomorrow, and in every universe parallel to this one.",
+    "surprise_image": "assets/backgrounds/swan-heart.jpg",
+    "surprise_replay": "Replay the magic",
+
+    "footer_kicker": "faithfully yours",
+    "closing_message": "Whatever this letter becomes, it was written true.",
+    "closing_date": "Valentine's, 2026",
+    "footer_note": "Made by hand, for your eyes only",
+    "background_music": "assets/ambient.wav"
+  }
+}

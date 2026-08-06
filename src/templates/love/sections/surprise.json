@@ -1,0 +1,24 @@
+{
+  "id": "surprise",
+  "type": "surprise",
+  "label": "Final Surprise",
+  "enabled": true,
+  "order": 14,
+  "animation": { "preset": "zoom", "duration": 1.1 },
+  "style": {
+    "background": {
+      "image": "assets/backgrounds/rose-dark.jpg",
+      "position": "50% 30%",
+      "opacity": 0.8
+    }
+  },
+  "content": {
+    "kicker": "@surprise_kicker",
+    "title": "@surprise_title",
+    "buttonLabel": "@surprise_button",
+    "afterTitle": "@surprise_after_title",
+    "message": "@surprise_message",
+    "image": "@surprise_image",
+    "replayLabel": "@surprise_replay"
+  }
+}

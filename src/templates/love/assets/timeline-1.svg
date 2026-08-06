@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1323"/>
+      <stop offset="1" stop-color="#0c0912"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.7" cy="0.25" r="0.6">
+      <stop offset="0" stop-color="#f0c9a6" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#f0c9a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <rect width="900" height="600" fill="url(#warm)"/>
+  <g transform="translate(450 300)">
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#e9b8a6" stroke-width="1.2" stroke-opacity="0.7"/>
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#e9b8a6" stroke-width="1" stroke-opacity="0.45"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#f5d3c3" stroke-width="1" stroke-opacity="0.6"/>
+    <circle cx="0" cy="0" r="16" fill="#f5d3c3" opacity="0.9"/>
+    <text x="0" y="230" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="26" fill="#f8f4ef" opacity="0.9" letter-spacing="2">first hello</text>
+  </g>
+</svg>

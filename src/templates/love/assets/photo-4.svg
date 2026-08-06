@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#100b18"/>
+      <stop offset="1" stop-color="#191021"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f0c9a6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f0c9a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <circle cx="600" cy="820" r="300" fill="url(#lamp)"/>
+  <path d="M600 340 L600 680 M420 620 L780 620 M460 480 L740 480" stroke="#f5d3c3" stroke-width="2" stroke-opacity="0.7"/>
+  <rect x="430" y="700" width="340" height="12" rx="6" fill="#e9b8a6" opacity="0.85"/>
+  <g stroke="#f5d3c3" stroke-opacity="0.4" stroke-width="1.4" fill="none">
+    <path d="M200 1180 Q 400 1130, 600 1180 T 1000 1175"/>
+    <path d="M240 1280 Q 440 1235, 640 1280 T 980 1276"/>
+  </g>
+  <g fill="#f5d3c3" opacity="0.7">
+    <circle cx="330" cy="290" r="3.4"/><circle cx="900" cy="360" r="2.6"/><circle cx="560" cy="180" r="2.2"/>
+  </g>
+  <text x="600" y="1420" text-anchor="middle" font-family="Georgia, serif" font-size="54" letter-spacing="6" fill="#f8f4ef" opacity="0.9">our street</text>
+</svg>

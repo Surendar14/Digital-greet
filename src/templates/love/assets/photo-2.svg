@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#161019"/>
+      <stop offset="1" stop-color="#0c0911"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.65">
+      <stop offset="0" stop-color="#e9b8a6" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#e9b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f8f4ef"/>
+      <stop offset="1" stop-color="#d9b6aa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#glow)"/>
+  <circle cx="880" cy="240" r="150" fill="url(#moon)" opacity="0.9"/>
+  <g fill="#f8f4ef" opacity="0.14">
+    <circle cx="200" cy="120" r="1.5"/><circle cx="620" cy="90" r="2"/><circle cx="1080" cy="700" r="2.2"/>
+    <circle cx="140" cy="540" r="1.6"/><circle cx="980" cy="120" r="1.6"/>
+  </g>
+  <path d="M0 700 C 300 640, 500 760, 760 690 C 940 650, 1080 700, 1200 660 L1200 900 L0 900 Z" fill="#120d18" opacity="0.8"/>
+  <text x="600" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" letter-spacing="10" fill="#e9b8a6" opacity="0.85">SILENT NIGHT</text>
+</svg>

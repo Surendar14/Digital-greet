@@ -1,0 +1,26 @@
+{
+  "id": "reasons",
+  "type": "cards",
+  "label": "Reasons I Love You",
+  "enabled": true,
+  "order": 11,
+  "animation": { "preset": "rise", "duration": 0.9, "stagger": 0.09 },
+  "style": {
+    "background": {
+      "image": "assets/backgrounds/rose-macro.jpg",
+      "position": "50% 20%",
+      "opacity": 0.45,
+      "blur": 2
+    }
+  },
+  "settings": {
+    "columns": 3,
+    "numbers": true
+  },
+  "content": {
+    "kicker": "@reasons_kicker",
+    "title": "@reasons_title",
+    "subtitle": "@reasons_subtitle",
+    "cards": "@reasons"
+  }
+}

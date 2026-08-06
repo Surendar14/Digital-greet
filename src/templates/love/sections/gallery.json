@@ -1,0 +1,28 @@
+{
+  "id": "gallery",
+  "type": "gallery",
+  "label": "Photo Gallery",
+  "enabled": true,
+  "order": 6,
+  "animation": { "preset": "fadeUp", "duration": 1 },
+  "style": {
+    "maxWidth": "960px",
+    "background": {
+      "image": "assets/backgrounds/gallery-flowers.jpg",
+      "position": "50% 50%",
+      "opacity": 0.7,
+      "blur": 0,
+      "overlay": "rgba(10,5,8,0.55)"
+    }
+  },
+  "settings": {
+    "mode": "@gallery_mode",
+    "lightbox": true
+  },
+  "content": {
+    "kicker": "@gallery_kicker",
+    "title": "@gallery_title",
+    "subtitle": "@gallery_subtitle",
+    "photos": "@photos"
+  }
+}

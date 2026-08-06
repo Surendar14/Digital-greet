@@ -1,0 +1,30 @@
+{
+  "id": "hero",
+  "type": "hero",
+  "label": "Hero",
+  "enabled": true,
+  "order": 2,
+  "animation": { "preset": "fadeDown", "duration": 1.1, "stagger": 0.14, "staggerDelay": 0.1 },
+  "style": {
+    "fullHeight": true,
+    "background": {
+      "image": "assets/backgrounds/rose-bokeh.jpg",
+      "position": "85% 12%",
+      "opacity": 0.9
+    }
+  },
+  "settings": {
+    "background": "none",
+    "overlay": "linear-gradient(180deg, rgba(10,5,8,0.40) 0%, rgba(10,5,8,0.22) 45%, rgba(10,5,8,0.68) 100%)"
+  },
+  "content": {
+    "badge": "@badge",
+    "kicker": "to @recipient_name, from @sender_name",
+    "title": "@headline",
+    "subtitle": "@subtitle",
+    "image": "assets/hero-bg.svg",
+    "cta": { "label": "@cta_primary", "to": "story" },
+    "cta2": { "label": "@cta_secondary", "to": "surprise" },
+    "scrollHint": "our story waits"
+  }
+}

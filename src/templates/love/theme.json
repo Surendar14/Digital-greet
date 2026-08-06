@@ -1,0 +1,71 @@
+{
+  "id": "love",
+  "name": "Rose Gold Midnight",
+  "mode": "dark",
+  "colors": {
+    "primary": "#E9B8A6",
+    "primarySoft": "#F5D3C3",
+    "primaryDeep": "#C98B7A",
+    "secondary": "#F4C9CB",
+    "accent": "#FFFFFF",
+    "background": "#0a0508",
+    "surface": "#150f13",
+    "surface2": "#1e1517",
+    "text": "#F8F4EF",
+    "textMuted": "#B7AEAD",
+    "border": "rgba(233,184,165,0.16)",
+    "textOnPrimary": "#24101180",
+    "gradientText": "linear-gradient(115deg, #FBF6F1 0%, #E8B8A5 42%, #D39A8D 68%, #F4C9CB 100%)"
+  },
+  "fonts": {
+    "display": "\"Cormorant Garamond\", Georgia, serif",
+    "body": "\"Inter\", system-ui, -apple-system, sans-serif",
+    "script": "\"Great Vibes\", \"Cormorant Garamond\", cursive"
+  },
+  "typography": {
+    "stepH1": "clamp(3rem, 10vw, 6.2rem)",
+    "stepH2": "clamp(1.95rem, 5.8vw, 3.3rem)",
+    "stepH3": "clamp(1.25rem, 3vw, 1.7rem)",
+    "stepBody": "1.06rem",
+    "letterSpacingWide": "0.22em"
+  },
+  "buttons": {
+    "variant": "gradient",
+    "radius": "999px",
+    "paddingX": "2.3rem",
+    "paddingY": "0.95rem",
+    "letterSpacing": "0.16em",
+    "textTransform": "uppercase"
+  },
+  "radius": {
+    "sm": "10px",
+    "md": "18px",
+    "lg": "26px",
+    "xl": "42px",
+    "pill": "999px"
+  },
+  "shadows": {
+    "sm": "0 2px 16px rgba(0,0,0,0.28)",
+    "md": "0 12px 42px rgba(0,0,0,0.38)",
+    "lg": "0 28px 90px rgba(0,0,0,0.55)",
+    "glow": "0 0 60px rgba(232,184,165,0.18)"
+  },
+  "background": {
+    "gradient": "radial-gradient(1200px 900px at 18% -12%, rgba(232,184,165,0.10), transparent 58%), radial-gradient(1000px 760px at 96% 22%, rgba(244,201,203,0.07), transparent 55%), linear-gradient(180deg, #0a0508 0%, #140b0e 42%, #1a0f14 100%)",
+    "particles": {
+      "enabled": true,
+      "count": 70,
+      "colors": [[232, 184, 165], [244, 201, 203], [255, 255, 255]],
+      "maxOpacity": 0.4,
+      "speed": 0.14,
+      "size": [1, 2.4],
+      "glow": true
+    },
+    "grain": true,
+    "vignette": true
+  },
+  "motion": {
+    "particles": true,
+    "duration": 1
+  }
+}

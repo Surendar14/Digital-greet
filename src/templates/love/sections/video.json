@@ -1,0 +1,31 @@
+{
+  "id": "video",
+  "type": "video",
+  "label": "Video",
+  "enabled": true,
+  "order": 7,
+  "animation": { "preset": "fadeUp", "duration": 1 },
+  "style": {
+"background": {
+      "image": "assets/backgrounds/video-abstract.jpg",
+      "position": "50% 50%",
+      "opacity": 0.72,
+      "blur": 0,
+      "overlay": "rgba(10,5,8,0.55)"
+    }
+  },
+  "settings": {
+    "mock": true,
+    "muted": true,
+    "autoplay": false,
+    "controls": true,
+    "rounded": true
+  },
+  "content": {
+    "kicker": "in motion",
+    "title": "@video_title",
+    "subtitle": "@video_subtitle",
+    "poster": "@video_poster",
+    "caption": "@video_caption"
+  }
+}

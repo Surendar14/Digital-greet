@@ -1,0 +1,15 @@
+{
+  "id": "second-note",
+  "type": "text",
+  "label": "A second note (disabled by default — set enabled to true)",
+  "enabled": false,
+  "order": 9,
+  "animation": { "preset": "fadeUp" },
+  "style": { "maxWidth": "640px" },
+  "settings": { "dropcap": false },
+  "content": {
+    "kicker": "ps.",
+    "title": "…and one more thing",
+    "body": "This section lives in its own JSON file. Flip \"enabled\" to true and it appears between the letter and the music — no engine changes needed."
+  }
+}

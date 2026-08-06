@@ -1,0 +1,24 @@
+{
+  "id": "welcome",
+  "type": "hero",
+  "label": "Welcome",
+  "enabled": true,
+  "order": 1,
+  "animation": { "preset": "blurIn", "duration": 1.2 },
+  "style": {
+    "fullHeight": true,
+    "background": {
+      "image": "assets/backgrounds/rose-full.jpg",
+      "position": "50% 40%",
+      "opacity": 0.85,
+      "blur": 0
+    }
+  },
+  "settings": { "background": "gradient" },
+  "content": {
+    "kicker": "@welcome_kicker",
+    "title": "@welcome_title",
+    "subtitle": "@welcome_prompt",
+    "scrollHint": "softly, scroll"
+  }
+}
