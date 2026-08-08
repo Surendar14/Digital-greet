@@ -1,4 +1,4 @@
-{
+﻿{
   "id": "timeline",
   "type": "timeline",
   "label": "Memory Timeline",
@@ -11,7 +11,7 @@
       "position": "12% 88%",
       "opacity": 0.72,
       "blur": 0,
-      "overlay": "rgba(10,5,8,0.55)"
+      "overlay": "rgba(10,5,8,0.45)"
     }
   },
   "settings": { "photos": true },

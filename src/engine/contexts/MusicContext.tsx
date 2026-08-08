@@ -81,7 +81,7 @@ export function MusicProvider({ track, children }: { track: MusicTrack | null; c
 
   /** Browser autoplay policies: attach a one-time gesture listener. */
   useEffect(() => {
-    if (!trackRef.current) return;
+    if (!trackRef.current || trackRef.current.youtubeId) return;
     const attempt = () => {
       setInteracted(true);
       if (trackRef.current?.autoplay) {
@@ -100,7 +100,7 @@ export function MusicProvider({ track, children }: { track: MusicTrack | null; c
 
   return (
     <MusicContext.Provider value={value}>
-      {track?.src ? (
+      {track?.src && !track.youtubeId ? (
         <audio
           ref={(el) => {
             audioRef.current = el;
@@ -122,7 +122,8 @@ export function MusicProvider({ track, children }: { track: MusicTrack | null; c
 /** Floating persistent player (engine-level, template-agnostic). */
 export function FloatingMusicPlayer() {
   const music = useMusic();
-  if (!music.track) return null;
+  // YouTube tracks are played from the section's own embed — no floating bed.
+  if (!music.track || music.track.youtubeId) return null;
 
   return (
     <div className="music-dock" role="region" aria-label="Background music player">

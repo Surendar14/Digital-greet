@@ -31,7 +31,8 @@ export function GallerySection(props: SectionProps) {
     if (!lightboxEnabled) return;
     lightbox.open(
       photos.map((p) => ({ src: p.src, caption: p.caption })),
-      i
+      i,
+      { title: c.title }
     );
   };
 

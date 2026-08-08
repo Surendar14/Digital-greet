@@ -83,7 +83,7 @@ export function SectionBackdrop({ bg }: { bg?: BackdropConfig | string | null })
     };
   }, [config.image]);
 
-  const overlay = config.overlay ?? "rgba(10,5,8,0.75)";
+  const overlay = config.overlay ?? "rgba(10,5,8,0.45)";
   const blur = config.blur ?? 0;
   const peak = config.opacity ?? 1;
 

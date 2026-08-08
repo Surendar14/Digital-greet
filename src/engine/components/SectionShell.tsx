@@ -31,7 +31,7 @@ export function SectionShell({
     <div
       className={cx("section-shell", `section-shell--${density}`, className)}
       style={styleObj}
-      id={id ? `section-${id}` : undefined}
+      id={id ? `section-${id}` : `section-${section.id}`}
       data-section={section.id}
     >
       <div

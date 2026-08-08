@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useMemo } from "react";
+import { createContext, useCallback, useContext, useMemo, useRef } from "react";
 import type { AnimationEntry, EngineApi, TemplatePackage } from "../types";
 import { buildReveal, buildStagger } from "../motion/variants";
 
@@ -12,10 +12,29 @@ export function useEngine(): EngineApi {
 
 /** Builds the engine API surface for a template package. */
 export function useEngineApi(pkg: TemplatePackage): EngineApi {
+  const frameRef = useRef<number | null>(null);
+
   const scrollToSection = useCallback((id: string) => {
     const el = document.getElementById(`section-${id}`);
     if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const start = window.scrollY;
+    const target = Math.max(0, el.getBoundingClientRect().top + start);
+    const delta = target - start;
+    const duration = reduce ? 400 : 2400;
+    const t0 = performance.now();
+    const ease = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / duration);
+      window.scrollTo(0, start + delta * ease(t));
+      if (t < 1) frameRef.current = requestAnimationFrame(step);
+      else frameRef.current = null;
+    };
+    frameRef.current = requestAnimationFrame(step);
   }, []);
 
   return useMemo<EngineApi>(

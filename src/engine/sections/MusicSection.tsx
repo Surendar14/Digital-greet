@@ -28,6 +28,28 @@ export function MusicSection(props: SectionProps) {
   const title = c.trackTitle || music.track?.title || "Our song";
   const artist = c.artist || music.track?.artist || c.subtitle;
 
+  // YouTube tracks: replace the stylized player with an embed (no autoplay —
+  // the listener taps their own play; the section keeps heading + note).
+  if (music.track?.youtubeId) {
+    const embedUrl = `https://www.youtube-nocookie.com/embed/${music.track.youtubeId}?rel=0&modestbranding=1&playsinline=1`;
+    return (
+      <SectionShell section={props.section} className="music-shell">
+        <SectionHeading kicker={c.kicker} title={c.title} subtitle={c.subtitle} />
+        <div className="music-embed">
+          <iframe
+            src={embedUrl}
+            title={`${title}${artist ? ` — ${artist}` : ""}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            loading="lazy"
+          />
+        </div>
+        {c.note && <p className="music-card__note music-embed__note">{c.note}</p>}
+      </SectionShell>
+    );
+  }
+
   return (
     <SectionShell section={props.section} className="music-shell">
       <SectionHeading kicker={c.kicker} title={c.title} subtitle={c.subtitle} />

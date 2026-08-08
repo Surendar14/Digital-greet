@@ -64,6 +64,12 @@ function sortAndFilter(sections: SectionConfig[]): SectionConfig[] {
     .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 }
 
+/** Pull a YouTube video id out of watch?v= / youtu.be / shorts links. */
+function extractYoutubeId(url: string): string | null {
+  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([\w-]{11})/);
+  return m ? m[1] : null;
+}
+
 export function TemplateHost({ pkg }: { pkg: TemplatePackage }) {
   const [sections, setSections] = useState<SectionConfig[]>(pkg.sections);
   const [fieldPatch, setFieldPatch] = useState<Record<string, unknown>>({});
@@ -93,8 +99,10 @@ export function TemplateHost({ pkg }: { pkg: TemplatePackage }) {
     const src = typeof fields.background_music === "string" ? fields.background_music : null;
     if (!src) return null;
     const meta = (fields.music_meta as Record<string, unknown>) ?? {};
+    const youtubeId = extractYoutubeId(src);
     return {
       src,
+      youtubeId: youtubeId ?? undefined,
       title: typeof meta.title === "string" ? meta.title : undefined,
       artist: typeof meta.artist === "string" ? meta.artist : undefined,
       autoplay: meta.autoplay === true

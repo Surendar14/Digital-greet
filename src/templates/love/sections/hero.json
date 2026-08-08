@@ -22,9 +22,8 @@
     "kicker": "to @recipient_name, from @sender_name",
     "title": "@headline",
     "subtitle": "@subtitle",
-    "image": "assets/hero-bg.svg",
+    "image": "assets/gallery-pins/pin-06.jpg",
     "cta": { "label": "@cta_primary", "to": "story" },
-    "cta2": { "label": "@cta_secondary", "to": "surprise" },
     "scrollHint": "our story waits"
   }
 }

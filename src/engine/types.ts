@@ -318,6 +318,8 @@ export interface MusicTrack {
   src: string;
   title?: string;
   artist?: string;
+  /** When set, the track is played as a YouTube embed instead of <audio>. */
+  youtubeId?: string;
   /** Attempt autoplay where browser policies permit. */
   autoplay?: boolean;
   loop?: boolean;
@@ -329,6 +331,6 @@ export interface LightboxImage {
 }
 
 export interface LightboxApi {
-  open: (images: LightboxImage[], startIndex?: number) => void;
+  open: (images: LightboxImage[], startIndex?: number, opts?: { title?: string }) => void;
   close: () => void;
 }

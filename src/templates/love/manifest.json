@@ -15,6 +15,8 @@
     "welcome_kicker": "You have a letter",
     "welcome_title": "A love letter, in the quiet",
     "welcome_prompt": "Scroll gently. It was made only for you.",
+    "cta_primary": "Begin our story",
+    "cta_secondary": "Skip to the ending",
     "badge": "A little reminder, sometimes",
 
     "story_title": "How we became us",
@@ -33,20 +35,20 @@
     "gallery_kicker": "kept close",
     "gallery_title": "A little gallery of us",
     "gallery_subtitle": "Tap any frame to fall into it.",
-    "photos": [
-      { "src": "assets/photo-1.svg", "caption": "Golden hour, the first time we noticed" },
-      { "src": "assets/photo-2.svg", "caption": "Your favourite kind of quiet" },
-      { "src": "assets/photo-3.svg", "caption": "A Sunday that felt like a holiday" },
-      { "src": "assets/photo-4.svg", "caption": "An ordinary street, made ours" },
-      { "src": "assets/photo-5.svg", "caption": "Rain — and nowhere we had to be" },
-      { "src": "assets/photo-6.svg", "caption": "The beginning of a long, lovely road" }
+"photos": [
+      { "src": "assets/gallery-pins/pin-01.jpg", "caption": "Style — ours, always" },
+      { "src": "assets/gallery-pins/pin-03.jpg", "caption": "Pink hour, soft as us" },
+      { "src": "assets/gallery-pins/pin-05.jpg", "caption": "Sketching our story" },
+      { "src": "assets/gallery-pins/pin-09.jpg", "caption": "Forever starts with you" },
+      { "src": "assets/gallery-pins/pin-10.jpg", "caption": "Made for each other" },
+      { "src": "assets/gallery-pins/pin-13.jpg", "caption": "Kept close, always" }
     ],
     "gallery_mode": "masonry",
 
     "video_title": "Recent moments",
     "video_subtitle": "The moving pictures",
     "video_caption": "Replace this frame with your favourite clip of us.",
-    "video_poster": "assets/video-cover.svg",
+    "video_poster": "assets/gallery-pins/pin-04.jpg",
 
     "message_title": "A message, kept just for you",
     "message_kicker": "read me slowly",
@@ -55,13 +57,13 @@
       "Whatever today is for you — loud, quiet, golden or hard — you are not carrying it alone. I will always look for you first in the room, and hold out my hand in the crowd."
     ],
 
-    "music_meta": {
-      "title": "Our Song",
-      "artist": "a melody only you can hear",
-      "autoplay": true
-    },
+"music_meta": {
+                       "title": "Perfect",
+                       "artist": "Ed Sheeran",
+                       "autoplay": false
+                   },
     "music_title": "The soundtrack",
-    "music_note": "It plays softly the whole way down the page — tap the note to start if your browser waits for you.",
+    "music_note": "Our song — press play and let it carry you the rest of the way down.",
 
     "countdown_title": "Counting down to us",
     "countdown_subtitle": "Because every second gets a title.",
@@ -82,9 +84,9 @@
     "timeline_title": "A short timeline of us",
     "timeline_subtitle": "Ordinary steps, extraordinary by the end.",
     "timeline": [
-      { "date": "The very first day", "title": "The hello", "text": "Across a café table — same hopeless order, same wrong opinion.", "photo": "assets/timeline-1.svg" },
-      { "date": "The long night", "title": "The first real talk", "text": "We stayed past all our good hours and discussed everything that mattered.", "photo": "assets/timeline-2.svg" },
-      { "date": "The wrong turning", "title": "Our first adventure", "text": "A lost road, a ruined day, a view neither of us has ever forgotten.", "photo": "assets/timeline-3.svg" },
+      { "date": "The very first day", "title": "The hello", "text": "Across a café table — same hopeless order, same wrong opinion.", "photo": "assets/gallery-pins/pin-02.jpg" },
+      { "date": "The long night", "title": "The first real talk", "text": "We stayed past all our good hours and discussed everything that mattered.", "photo": "assets/gallery-pins/pin-07.jpg" },
+      { "date": "The wrong turning", "title": "Our first adventure", "text": "A lost road, a ruined day, a view neither of us has ever forgotten.", "photo": "assets/gallery-pins/pin-12.jpg" },
       { "date": "Today and onward", "title": "Every day I choose you", "text": "And I would choose it again, in every universe that has a us in it." }
     ],
 
@@ -100,6 +102,6 @@
     "closing_message": "Whatever this letter becomes, it was written true.",
     "closing_date": "Valentine's, 2026",
     "footer_note": "Made by hand, for your eyes only",
-    "background_music": "assets/ambient.wav"
+    "background_music": "https://www.youtube.com/watch?v=tFXqkmGQaAw"
   }
 }

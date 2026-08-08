@@ -65,7 +65,6 @@ export function HeroSection(props: SectionProps) {
       <motion.div className="hero__inner" {...st.container}>
         {c.badge && (
           <motion.p className="hero__badge" variants={item.variants}>
-            <Icon name="heartSpark" size={13} />
             {c.badge}
           </motion.p>
         )}
