@@ -10,8 +10,10 @@ interface GalleryContent {
   kicker?: string;
   title?: string;
   subtitle?: string;
-  /** Either plain strings (src) or {src, caption?, ratio?} objects. */
-  photos?: Array<string | { src: string; caption?: string; ratio?: string }>;
+  /** Either plain strings (src) or {src, title?, description?, objectPosition?} objects. */
+  photos?: Array<
+    string | { src: string; title?: string; description?: string; ratio?: string; objectPosition?: string }
+  >;
 }
 
 export function GallerySection(props: SectionProps) {
@@ -19,20 +21,25 @@ export function GallerySection(props: SectionProps) {
   const lightbox = useLightbox();
   const settings = props.section.settings ?? {};
   const mode = getSetting<string>(settings, "mode", "masonry");
-  const lightboxEnabled = getSetting(settings, "lightbox", true);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const photos = (c.photos ?? []).map((p, i) =>
-    typeof p === "string" ? { src: p, caption: undefined, ratio: undefined, key: i } : { ...p, key: i }
+    typeof p === "string"
+      ? { src: p, title: undefined, description: undefined, ratio: undefined, objectPosition: undefined, key: i }
+      : { ...p, key: i }
   );
   if (photos.length === 0) return null;
 
   const openAt = (i: number) => {
-    if (!lightboxEnabled) return;
     lightbox.open(
-      photos.map((p) => ({ src: p.src, caption: p.caption })),
+      photos.map((p) => ({
+        src: p.src,
+        title: p.title,
+        description: p.description,
+        objectPosition: p.objectPosition
+      })),
       i,
-      { title: c.title }
+      { subtitle: c.subtitle }
     );
   };
 
@@ -53,10 +60,10 @@ export function GallerySection(props: SectionProps) {
               <LazyImage
                 key={p.key}
                 src={p.src}
-                alt={p.caption ?? `Gallery photo ${p.key + 1}`}
+                alt={p.title ?? `Gallery photo ${p.key + 1}`}
                 className="gallery-carousel__item"
                 onClick={() => openAt(p.key)}
-                caption={p.caption}
+                caption={p.title}
               />
             ))}
           </div>
@@ -83,11 +90,11 @@ export function GallerySection(props: SectionProps) {
             <LazyImage
               key={p.key}
               src={p.src}
-              alt={p.caption ?? `Gallery photo ${p.key + 1}`}
+              alt={p.title ?? `Gallery photo ${p.key + 1}`}
               className="gallery__item"
               aspectRatio={mode === "masonry" ? p.ratio ?? "3/4" : "1/1"}
               onClick={() => openAt(p.key)}
-              caption={p.caption}
+              caption={p.title}
             />
           ))}
         </div>

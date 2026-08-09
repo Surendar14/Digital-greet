@@ -1,78 +1,49 @@
-/**
- * Subtle fine-line botanical decorations for the lightbox (per reference).
- * Asymmetric editorial framing: a small sprig top-left, a larger botanical
- * bottom-left, and a delicate sprig bottom-right. Low opacity, muted copper
- * strokes with dusty-rose accents — line art, not filled flowers.
- */
-
-interface LeafProps {
-  d: string;
-}
-
-function Leaf({ d }: LeafProps) {
-  return <path className="botanical__leaf" d={d} />;
-}
-
-/** Small fine-line sprig — sits in the top-left corner. */
-function Sprig() {
-  return (
-    <svg viewBox="0 0 110 120" aria-hidden="true">
-      <path className="botanical__stem" d="M 96 114 C 84 104 74 94 66 82 C 58 70 50 58 42 46 C 36 37 30 29 22 22" />
-      <Leaf d="M 88 96 C 72 94 60 100 58 112 C 72 112 82 106 88 96 Z" />
-      <Leaf d="M 70 78 C 54 73 42 76 39 87 C 52 91 63 88 70 78 Z" />
-      <Leaf d="M 50 58 C 38 55 28 59 26 68 C 36 70 44 66 50 58 Z" />
-      <circle className="botanical__bud botanical__bud--1" cx="30" cy="35" r="4.5" />
-      <circle className="botanical__bud botanical__bud--2" cx="44" cy="42" r="3" />
-    </svg>
-  );
-}
-
-/** Larger botanical cluster — sits in the bottom-left corner. */
-function Bloom() {
-  return (
-    <svg viewBox="0 0 150 160" aria-hidden="true">
-      <path className="botanical__stem" d="M 24 150 C 44 138 58 118 66 96 C 72 79 82 62 94 50" />
-      <path className="botanical__stem" d="M 54 148 C 62 128 76 108 92 92" />
-      <path className="botanical__stem" d="M 84 140 C 96 126 106 112 118 96" />
-      <Leaf d="M 84 118 C 66 118 52 126 50 140 C 66 140 80 132 84 118 Z" />
-      <Leaf d="M 116 108 C 104 106 96 112 96 123 C 106 124 112 120 116 108 Z" />
-      <Leaf d="M 56 108 C 44 104 34 110 34 122 C 46 124 54 120 56 108 Z" />
-      <Leaf d="M 78 74 C 66 70 56 75 54 87 C 66 90 76 84 78 74 Z" />
-      <path className="botanical__petal" d="M 96 44 C 92 36 98 28 108 28 C 112 36 108 44 104 50 C 100 50 98 48 96 44 Z" />
-      <path className="botanical__petal" d="M 96 44 C 86 44 80 50 82 60 C 90 62 98 58 100 52 C 100 48 98 46 96 44 Z" />
-      <path className="botanical__petal" d="M 96 44 C 100 36 108 34 112 42 C 112 50 104 54 96 44 Z" />
-      <path className="botanical__petal" d="M 96 44 C 104 52 106 62 98 66 C 90 62 92 52 96 44 Z" />
-      <circle className="botanical__core" cx="96" cy="46" r="6" />
-      <circle className="bot__bud botanical__bud--" cx="120" cy="62" r="5" />
-    </svg>
-  );
-}
-
-/** Delicate sprig — sits in the bottom-right corner. */
-function SprigRight() {
-  return (
-    <svg viewBox="0 0 120 110" aria-hidden="true">
-      <path className="botanical__stem" d="M 14 100 C 30 78 48 58 70 38 C 82 28 92 20 102 12" />
-      <Leaf d="M 66 66 C 52 62 42 68 42 80 C 54 84 62 78 66 66 Z" />
-      <Leaf d="M 46 40 C 34 36 24 42 24 54 C 34 58 44 50 46 40 Z" />
-      <circle className="bot__bud botanical__bud--seed" cx="94" cy="28" r="4" />
-    </svg>
-  );
-}
-
-/** Asymmetric botanical decoration set for the lightbox frame. */
+/** Fine-line botanical rose — whisper-thin, barely there. */
 export function BotanicalArt() {
   return (
-    <>
-      <div className="botanical botanical--tl">
-        <Sprig />
-      </div>
-      <div className="botanical botanical--bl">
-        <Bloom />
-      </div>
-      <div className="botanical botanical--br">
-        <SprigRight />
-      </div>
-    </>
+    <div className="botanical" aria-hidden="true">
+      <svg viewBox="0 0 180 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" strokeWidth="0.55" strokeLinecap="round" strokeLinejoin="round">
+          {/* Stem */}
+          <path d="M 90 370 C 88 340 86 300 87 260 C 88 220 90 180 89 140 C 88 110 89 85 90 60" />
+
+          {/* Leaves — lower */}
+          <path d="M 88 310 C 68 298 44 300 30 316 C 44 322 64 318 88 310 Z" />
+          <path d="M 54 314 L 44 306" strokeWidth="0.35" />
+          <path d="M 72 311 L 66 304" strokeWidth="0.35" />
+
+          <path d="M 90 280 C 112 268 134 270 148 286 C 134 292 114 288 90 280 Z" />
+          <path d="M 120 284 L 130 276" strokeWidth="0.35" />
+
+          {/* Leaves — middle */}
+          <path d="M 88 240 C 64 228 40 230 26 248 C 42 254 62 250 88 240 Z" />
+          <path d="M 50 246 L 40 238" strokeWidth="0.35" />
+
+          <path d="M 90 215 C 114 203 136 205 150 222 C 136 228 116 224 90 215 Z" />
+
+          {/* Leaves — upper */}
+          <path d="M 89 180 C 70 170 52 172 42 184 C 54 188 70 186 89 180 Z" />
+          <path d="M 90 158 C 108 148 124 150 134 162 C 122 166 108 164 90 158 Z" />
+
+          {/* Thorns */}
+          <path d="M 87 330 L 82 326" strokeWidth="0.4" />
+          <path d="M 89 260 L 94 256" strokeWidth="0.4" />
+
+          {/* Rose bloom */}
+          <path d="M 90 60 C 78 44 68 28 72 14 C 75 6 82 0 90 -2 C 98 0 105 6 108 14 C 112 28 102 44 90 60 Z" />
+          <path d="M 82 32 C 78 22 80 12 90 4 C 84 16 82 24 82 32 Z" strokeWidth="0.4" />
+          <path d="M 98 32 C 102 22 100 12 90 4 C 96 16 98 24 98 32 Z" strokeWidth="0.4" />
+
+          {/* Sepals */}
+          <path d="M 76 58 C 66 54 58 56 52 64 C 60 66 70 64 76 58 Z" strokeWidth="0.4" />
+          <path d="M 104 58 C 114 54 122 56 128 64 C 120 66 110 64 104 58 Z" strokeWidth="0.4" />
+        </g>
+
+        {/* Sparkle — just one, very faint */}
+        <g fill="currentColor" opacity="0.3">
+          <polygon points="138,30 139.5,35 144,35 140.5,38 142,43 138,40 134,43 135.5,38 132,35 136.5,35" />
+        </g>
+      </svg>
+    </div>
   );
 }

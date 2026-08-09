@@ -327,10 +327,13 @@ export interface MusicTrack {
 
 export interface LightboxImage {
   src: string;
-  caption?: string;
+  title?: string;
+  description?: string;
+  /** CSS object-position for the photo frame crop, e.g. "center 35%". Defaults to "center". */
+  objectPosition?: string;
 }
 
 export interface LightboxApi {
-  open: (images: LightboxImage[], startIndex?: number, opts?: { title?: string }) => void;
+  open: (images: LightboxImage[], startIndex?: number, opts?: { title?: string; subtitle?: string }) => void;
   close: () => void;
 }

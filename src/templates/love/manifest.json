@@ -33,15 +33,15 @@
     "quote_source": "written by me, for you",
 
     "gallery_kicker": "kept close",
-    "gallery_title": "A little gallery of us",
-    "gallery_subtitle": "Tap any frame to fall into it.",
+    "gallery_title": "Forever starts with you",
+    "gallery_subtitle": "A little gallery of us",
 "photos": [
-      { "src": "assets/gallery-pins/pin-01.jpg", "caption": "Style — ours, always" },
-      { "src": "assets/gallery-pins/pin-03.jpg", "caption": "Pink hour, soft as us" },
-      { "src": "assets/gallery-pins/pin-05.jpg", "caption": "Sketching our story" },
-      { "src": "assets/gallery-pins/pin-09.jpg", "caption": "Forever starts with you" },
-      { "src": "assets/gallery-pins/pin-10.jpg", "caption": "Made for each other" },
-      { "src": "assets/gallery-pins/pin-13.jpg", "caption": "Kept close, always" }
+      { "src": "assets/gallery-pins/pin-01.jpg", "title": "Our beginning", "description": "where our story quietly began" },
+      { "src": "assets/gallery-pins/pin-03.jpg", "title": "Pink hour", "description": "soft as us, under a sky that felt like ours" },
+      { "src": "assets/gallery-pins/pin-05.jpg", "title": "Sketching us", "description": "slowly becoming a story worth keeping" },
+      { "src": "assets/gallery-pins/pin-09.jpg", "title": "Forever starts", "description": "with you, in all the little moments" },
+      { "src": "assets/gallery-pins/pin-10.jpg", "title": "Little moments", "description": "the kind I want to hold onto forever" },
+      { "src": "assets/gallery-pins/pin-13.jpg", "title": "Always us", "description": "and somehow, it is always you", "objectPosition": "center 35%" }
     ],
     "gallery_mode": "masonry",
 
@@ -102,6 +102,6 @@
     "closing_message": "Whatever this letter becomes, it was written true.",
     "closing_date": "Valentine's, 2026",
     "footer_note": "Made by hand, for your eyes only",
-    "background_music": "https://www.youtube.com/watch?v=tFXqkmGQaAw"
+    "background_music": "assets/ambient.wav"
   }
 }

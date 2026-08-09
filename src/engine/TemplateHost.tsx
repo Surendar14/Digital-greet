@@ -10,6 +10,7 @@ import type { MusicTrack, SectionConfig, TemplatePackage, ThemeConfig } from "./
 import { EngineProvider, useEngineApi } from "./contexts/EngineContext";
 import { MusicProvider, FloatingMusicPlayer } from "./contexts/MusicContext";
 import { LightboxProvider } from "./contexts/LightboxContext";
+
 import { SectionRenderer } from "./SectionRenderer";
 import { Particles } from "./components/Particles";
 import { Inspector } from "./components/Inspector";
