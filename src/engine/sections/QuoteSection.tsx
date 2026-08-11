@@ -18,7 +18,7 @@ export function QuoteSection(props: SectionProps) {
       <figure className="quote">
         <Icon name="quote" size={34} className="quote__mark" />
         <blockquote className="quote__text">{c.quote}</blockquote>
-        {c.source && <figcaption className="quote__source">â€” {c.source}</figcaption>}
+        {c.source && <figcaption className="quote__source">— {c.source}</figcaption>}
       </figure>
     </SectionShell>
   );

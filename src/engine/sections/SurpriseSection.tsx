@@ -74,7 +74,7 @@ export function SurpriseSection(props: SectionProps) {
               <Button
                 variant="ghost"
                 label={c.replayLabel ?? "Replay"}
-                onClick={() => setBurst((b) => b + 1)}
+                onClick={() => setRevealed(false)}
               />
             </motion.div>
           </AnimatePresence>

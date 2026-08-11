@@ -30,6 +30,12 @@ export function HeroSection(props: SectionProps) {
   const st = engine.staggerFor(props.section.animation ?? { preset: "fadeUp", stagger: 0.12, staggerDelay: 0.15 });
   const item = st.item;
 
+  // The scroll hint (and missing CTA) should lead to the next section,
+  // not skip whole screens of content.
+  const myOrder = props.section.order ?? 0;
+  const nextId = engine.pkg.sections.find((s) => (s.order ?? 0) > myOrder)?.id;
+  const hintTarget = c.cta?.to ?? nextId ?? "story";
+
   return (
     <section
       className="hero"
@@ -104,7 +110,7 @@ export function HeroSection(props: SectionProps) {
         <motion.button
           type="button"
           className="hero__hint"
-          onClick={() => props.scrollToSection(c.cta?.to ?? "story")}
+          onClick={() => props.scrollToSection(hintTarget)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 1 }}

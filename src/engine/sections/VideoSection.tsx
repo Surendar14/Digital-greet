@@ -54,7 +54,7 @@ export function VideoSection(props: SectionProps) {
             >
               {playing ? <Icon name="pause" size={26} /> : <Icon name="play" size={26} />}
             </button>
-            <p className="video__hint">A cinematic moment goes here â€” add your own clip.</p>
+            <p className="video__hint">A cinematic moment goes here — add your own clip.</p>
           </div>
         ) : null}
         {c.caption && <figcaption className="video__caption">{c.caption}</figcaption>}

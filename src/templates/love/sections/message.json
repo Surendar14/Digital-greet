@@ -1,22 +1,25 @@
-{
-  "id": "message",
-  "type": "text",
-  "label": "Special Message",
-  "enabled": true,
-  "order": 8,
-  "animation": { "preset": "soft", "duration": 1.1 },
-  "style": {
-    "maxWidth": "720px",
-    "background": {
-      "image": "assets/backgrounds/rose-glow.jpg",
-      "position": "88% 70%",
-      "opacity": 0.55,
-      "blur": 1
-    }
-  },
-  "content": {
-    "kicker": "@message_kicker",
-    "title": "@message_title",
-    "body": "@special_message"
-  }
+﻿{
+    "id":  "message",
+    "type":  "text",
+    "label":  "Special Message",
+    "enabled":  true,
+    "order":  8,
+    "animation":  {
+                      "preset":  "soft",
+                      "duration":  1.1
+                  },
+    "style":  {
+                  "maxWidth":  "700px",
+                  "background":  {
+                                     "image":  "assets/backgrounds/rose-glow.jpg",
+                                     "position":  "88% 70%",
+                                     "opacity":  0.55,
+                                     "blur":  1
+                                 }
+              },
+    "content":  {
+                    "kicker":  "@message_kicker",
+                    "title":  "@message_title",
+                    "body":  "@special_message"
+                }
 }

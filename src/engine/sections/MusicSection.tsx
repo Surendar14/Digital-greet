@@ -56,8 +56,8 @@ export function MusicSection(props: SectionProps) {
 
       <div className="music-card">
         <div className="music-card__art" aria-hidden="true">
-          <div className="music-card__disc">
-            {music.playing && <span className="music-card__spin" />}
+          <div className={`music-card__disc${music.playing ? " music-card__disc--playing" : ""}`}>
+            <span className="music-card__spin" />
           </div>
         </div>
 
@@ -65,7 +65,7 @@ export function MusicSection(props: SectionProps) {
           <p className="music-card__title">{c.title ?? "The soundtrack"}</p>
           <p className="music-card__track">
             {title}
-            {artist ? <em>Â· {artist}</em> : null}
+            {artist ? <em>· {artist}</em> : null}
           </p>
 
           <div className="music-card__controls">
@@ -87,7 +87,7 @@ export function MusicSection(props: SectionProps) {
               <div className="music-card__volume">
                 <button
                   type="button"
-                  onClick={() => music.setMuted(!music.muted)}
+                  onClick={music.toggleMute}
                   aria-label={music.muted ? "Unmute music" : "Mute music"}
                   aria-pressed={music.muted}
                 >

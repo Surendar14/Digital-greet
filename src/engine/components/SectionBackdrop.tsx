@@ -16,7 +16,7 @@ export interface BackdropState {
 }
 
 /**
- * A single section's rose-themed background layer.
+ * A section's rose-themed background layer.
  *
  * Sits inside `.section-frame` at z-index 0 so content paints above it.
  * As each section arrives, the backdrop performs a premium reveal:
@@ -34,20 +34,20 @@ export function SectionBackdrop({ bg }: { bg?: BackdropConfig | string | null })
     scale: 1.16,
     blurIn: 8,
   });
-
   let config: BackdropConfig | null = null;
   if (typeof bg === "string") config = { image: bg };
   else if (bg && typeof bg === "object") config = bg;
   if (!config?.image) return null;
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
     const reduce = prefersReducedMotion();
     let raf = 0;
+    let isListening = false;
     const update = () => {
       raf = 0;
-      const el = ref.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
+      const rect = element.getBoundingClientRect();
       const vh = window.innerHeight || 1;
       if (rect.bottom < 0 || rect.top > vh) {
         setState((s) =>
@@ -73,13 +73,43 @@ export function SectionBackdrop({ bg }: { bg?: BackdropConfig | string | null })
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
     };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    return () => {
+
+    const startListening = () => {
+      if (isListening) return;
+      isListening = true;
+      update();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll, { passive: true });
+    };
+    const stopListening = () => {
+      if (!isListening) return;
+      isListening = false;
       if (raf) cancelAnimationFrame(raf);
+      raf = 0;
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+    };
+
+    // Keep the exact visual motion, but only run its scroll calculation for
+    // sections near the viewport. Long greetings otherwise create a listener
+    // and layout read for every section on every scroll frame.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startListening();
+        else {
+          stopListening();
+          setState((s) =>
+            s.opacity === 0 && s.blurIn >= 8 ? s : { opacity: 0, y: 0, scale: 1.16, blurIn: 8 }
+          );
+        }
+      },
+      { rootMargin: "100% 0px" }
+    );
+    observer.observe(element);
+    update();
+    return () => {
+      observer.disconnect();
+      stopListening();
     };
   }, [config.image]);
 

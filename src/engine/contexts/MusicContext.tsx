@@ -30,6 +30,7 @@ export interface MusicState {
   togglePlay: () => void;
   play: () => void;
   pause: () => void;
+  toggleMute: () => void;
   setMuted: (m: boolean) => void;
   setVolume: (v: number) => void;
 }
@@ -79,6 +80,17 @@ export function MusicProvider({ track, children }: { track: MusicTrack | null; c
   const setMuted = useCallback((m: boolean) => setMutedState(m), []);
   const setVolume = useCallback((v: number) => setVolumeState(Math.min(1, Math.max(0, v))), []);
 
+  /** Unmuting from silence restores a comfortable default volume. */
+  const toggleMute = useCallback(() => {
+    setMutedState((m) => {
+      if (m) {
+        setVolumeState((v) => (v === 0 ? 0.7 : v));
+        return false;
+      }
+      return true;
+    });
+  }, []);
+
   /** Browser autoplay policies: attach a one-time gesture listener. */
   useEffect(() => {
     if (!trackRef.current || trackRef.current.youtubeId) return;
@@ -94,8 +106,8 @@ export function MusicProvider({ track, children }: { track: MusicTrack | null; c
   }, []);
 
   const value = useMemo<MusicState>(
-    () => ({ track, ready, playing, muted, volume, interacted, togglePlay, play, pause, setMuted, setVolume }),
-    [track, ready, playing, muted, volume, interacted, togglePlay, play, pause, setMuted, setVolume]
+    () => ({ track, ready, playing, muted, volume, interacted, togglePlay, play, pause, toggleMute, setMuted, setVolume }),
+    [track, ready, playing, muted, volume, interacted, togglePlay, play, pause, toggleMute, setMuted, setVolume]
   );
 
   return (
@@ -165,7 +177,7 @@ export function FloatingMusicPlayer() {
       <button
         type="button"
         className="music-dock__toggle"
-        onClick={() => music.setMuted(!music.muted)}
+        onClick={music.toggleMute}
         aria-label={music.muted ? "Unmute music" : "Mute music"}
         aria-pressed={music.muted}
       >

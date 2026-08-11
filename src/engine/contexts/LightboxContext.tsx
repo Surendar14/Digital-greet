@@ -37,6 +37,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
   const panelRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const swipeStartX = useRef<number | null>(null);
 
   const openLightbox = useCallback(
     (imgs: LightboxImage[], startIndex = 0, opts?: { title?: string; subtitle?: string }) => {
@@ -173,10 +174,30 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
                   <Icon name="chevronLeft" size={18} />
                 </button>
               )}
+              {images.length > 1 && (
+                <button
+                  type="button"
+                  className="lb__arrow lb__arrow--next-inline"
+                  onClick={(e) => { e.stopPropagation(); step(1); }}
+                  aria-label="Next image"
+                >
+                  <Icon name="chevronRight" size={18} />
+                </button>
+              )}
             </div>
 
             {/* Center: photo in fixed portrait frame with crossfade */}
-            <div className="lb__photo">
+            <div
+              className="lb__photo"
+              onPointerDown={(e) => { swipeStartX.current = e.clientX; }}
+              onPointerUp={(e) => {
+                const start = swipeStartX.current;
+                swipeStartX.current = null;
+                if (start === null || images.length < 2) return;
+                const dx = e.clientX - start;
+                if (Math.abs(dx) > 48) step(dx < 0 ? 1 : -1);
+              }}
+            >
               <div className="lb__photo-frame">
                 {prevIndex !== null && (
                   <img

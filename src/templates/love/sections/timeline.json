@@ -1,24 +1,32 @@
 ﻿{
-  "id": "timeline",
-  "type": "timeline",
-  "label": "Memory Timeline",
-  "enabled": true,
-  "order": 12,
-  "animation": { "preset": "fadeUp", "duration": 0.9, "stagger": 0.12 },
-  "style": {
-    "background": {
-      "image": "assets/backgrounds/rose-shallow.jpg",
-      "position": "12% 88%",
-      "opacity": 0.72,
-      "blur": 0,
-      "overlay": "rgba(10,5,8,0.45)"
-    }
-  },
-  "settings": { "photos": true },
-  "content": {
-    "kicker": "so far",
-    "title": "@timeline_title",
-    "subtitle": "@timeline_subtitle",
-    "items": "@timeline"
-  }
+    "id":  "timeline",
+    "type":  "timeline",
+    "label":  "Memory Timeline",
+    "enabled":  true,
+    "order":  12,
+    "animation":  {
+                      "preset":  "fadeUp",
+                      "duration":  0.9,
+                      "stagger":  0.12,
+                      "viewAmount":  0.06
+                  },
+    "style":  {
+                  "maxWidth":  "880px",
+                  "background":  {
+                                     "image":  "assets/backgrounds/rose-shallow.jpg",
+                                     "position":  "12% 88%",
+                                     "opacity":  0.72,
+                                     "blur":  0,
+                                     "overlay":  "rgba(10,5,8,0.45)"
+                                 }
+              },
+    "settings":  {
+                     "photos":  true
+                 },
+    "content":  {
+                    "kicker":  "so far",
+                    "title":  "@timeline_title",
+                    "subtitle":  "@timeline_subtitle",
+                    "items":  "@timeline"
+                }
 }

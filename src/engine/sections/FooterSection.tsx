@@ -24,7 +24,7 @@ export function FooterSection(props: SectionProps) {
         {(c.sender || c.date) && (
           <p className="footer__meta">
             {c.sender}
-            {c.sender && c.date ? " Â· " : ""}
+            {c.sender && c.date ? " · " : ""}
             {c.date}
           </p>
         )}

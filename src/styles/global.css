@@ -7,7 +7,6 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   background: var(--c-bg-root, #0a0910);
   overflow-x: hidden;
@@ -72,12 +71,17 @@ body {
 /* ------------------------------------------------------------------ layout */
 .tpl-main { position: relative; z-index: 1; }
 
-.section-frame { position: relative; }
+.section-frame {
+  position: relative;
+  isolation: isolate;
+}
 
 .section-bg {
   position: absolute;
-  top: -18vh;
-  bottom: -18vh;
+  /* Extend each image into its neighbours so the mask has room to crossfade
+     backgrounds rather than exposing the page colour at section edges. */
+  top: -28svh;
+  bottom: -28svh;
   left: 0;
   right: 0;
   z-index: 0;
@@ -85,6 +89,24 @@ body {
   pointer-events: none;
   opacity: 0;
   will-change: opacity, transform, filter;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 12%,
+    #000 30%,
+    #000 70%,
+    rgba(0, 0, 0, 0.45) 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 12%,
+    #000 30%,
+    #000 70%,
+    rgba(0, 0, 0, 0.45) 88%,
+    transparent 100%
+  );
 }
 .section-bg__img {
   position: absolute;
@@ -117,7 +139,7 @@ body {
 .section-shell--compact { padding-block: var(--space-section-mobile); }
 .section-shell--spacious { padding-block: calc(var(--space-section) * 1.25); }
 .section-shell__inner {
-  width: min(100% - 2.5rem, var(--maxw, 680px));
+  width: min(100% - 2.5rem, var(--maxw, 700px));
   margin-inline: auto;
 }
 @media (min-width: 768px) {
@@ -148,11 +170,7 @@ body {
   line-height: 1.08;
   letter-spacing: -0.01em;
   margin: 0.4rem 0 0.9rem;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 40px rgba(232,182,166,0.12);
+  color: var(--c-text);
 }
 .section-heading__subtitle {
   color: var(--c-text-muted);
@@ -336,7 +354,7 @@ body {
   font-size: clamp(1.55rem, 5vw, 2.5rem);
   line-height: 1.32;
   margin: 0.6rem auto 1rem; max-width: 30rem;
-  background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--c-text);
 }
 .quote__source {
   font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
@@ -387,6 +405,35 @@ body {
   opacity: 0; transition: opacity 0.35s ease;
 }
 .lazyimg:hover .lazyimg__caption { opacity: 1; }
+
+/* Individual media cards arrive just after their section, giving the gallery
+   and player sections their own rhythm without adding scroll-time JS work. */
+@supports (animation-timeline: view()) {
+  .video {
+    animation: video-card-enter 1.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 6% cover 68%;
+    transform-origin: center bottom;
+  }
+  .video__placeholder img {
+    animation: video-poster-settle 1.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 6% cover 72%;
+  }
+}
+@keyframes media-card-enter {
+  from { opacity: 0; transform: translate3d(0, 26px, 0) scale(0.97); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes video-card-enter {
+  from { opacity: 0; transform: translate3d(0, 46px, 0) scale(0.94); }
+  70% { opacity: 1; transform: translate3d(0, -3px, 0) scale(1.01); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes video-poster-settle {
+  from { transform: scale(1.12); }
+  to { transform: scale(1); }
+}
 
 .gallery-carousel-wrap { position: relative; }
 .gallery-carousel {
@@ -717,6 +764,9 @@ body {
 .lb__arrow--next:hover { transform: translateY(-50%) translateX(2px); }
 .lb__arrow:active { transform: translateY(-50%) scale(0.93); }
 
+/* Inline "next" arrow: only needed where the right column is hidden. */
+.lb__arrow--next-inline { display: none; }
+
 /* ── Close button ─────────────────────────────────── */
 .lb__close {
   position: absolute; top: clamp(1.2rem, 2vw, 1.8rem); right: clamp(1.2rem, 2vw, 1.8rem);
@@ -783,9 +833,16 @@ body {
     right: auto; top: auto; transform: none;
     flex-shrink: 0;
   }
+  .lb__arrow--next-inline {
+    display: grid;
+    position: relative;
+    right: auto; top: auto; transform: none;
+    flex-shrink: 0;
+  }
   .lb__photo {
     flex: 1 1 0;
     padding: clamp(0.4rem, 1.2vw, 0.8rem);
+    touch-action: pan-y;
   }
   .lb__photo-frame {
     width: min(72vw, 420px);
@@ -887,17 +944,57 @@ body {
 }
 .music-embed__note { margin-top: 1.2rem; }
 .music-shell .section-shell__inner { text-align: center; }
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .music-card {
+  position: relative;
   display: flex; align-items: center; gap: 1.4rem;
   max-width: 560px; margin-inline: auto;
   text-align: left;
   padding: 1.4rem 1.5rem;
   border-radius: var(--r-lg);
-  background: color-mix(in srgb, var(--c-surface) 70%, transparent);
-  border: 1px solid var(--c-border);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--sh-md);
+  border: none;
+  background: none;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
 }
+.music-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-lg);
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    var(--c-primary) 0%,
+    transparent 12%,
+    var(--c-primary) 28%,
+    transparent 40%,
+    var(--c-primary) 52%,
+    transparent 64%,
+    var(--c-primary) 80%,
+    transparent 92%,
+    var(--c-primary)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-loop 8s linear infinite;
+}
+.music-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--c-surface) 70%, transparent);
+  backdrop-filter: blur(12px);
+  z-index: 0;
+}
+.music-card > * { position: relative; z-index: 1; }
+@keyframes border-loop { to { --angle: 360deg; } }
 .music-card__art { display: grid; place-items: center; }
 .music-card__disc {
   position: relative; width: 84px; height: 84px; border-radius: 50%;
@@ -915,7 +1012,10 @@ body {
 .music-card__spin {
   position: absolute; inset: 0; border-radius: 50%;
   border: 2px dashed rgba(255,255,255,0.35);
-  animation: spin 12s linear infinite;
+}
+.music-card__disc--playing {
+  animation: spin 4s linear infinite;
+  will-change: transform;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 .music-card__info { flex: 1; min-width: 0; }
@@ -1077,7 +1177,6 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border-radius
   font-family: var(--font-display);
   font-size: clamp(2.1rem, 8vw, 3.4rem); font-weight: 500; line-height: 1;
   color: var(--c-text);
-  background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; color: transparent;
   font-variant-numeric: tabular-nums;
 }
 .countdown__label { display: block; margin-top: 0.45rem; font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--c-text-muted); }
@@ -1092,8 +1191,8 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border-radius
 .surprise__kicker { font-family: var(--font-script); font-size: 1.8rem; color: var(--c-primary-soft); margin: 0; }
 .surprise__title { font-family: var(--font-display); font-size: var(--step-h2); max-width: 30rem; margin: 0; line-height: 1.1; }
 .surprise__revealed { display: grid; justify-items: center; gap: 1.1rem; }
-.surprise__image { width: min(320px, 80%); aspect-ratio: 1/1; object-fit: cover; border-radius: var(--r-pill); box-shadow: var(--sh-lg), var(--sh-glow); }
-.surprise__reveal-title { font-family: var(--font-display); font-size: var(--step-h2); margin: 0; background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.surprise__image { width: min(340px, 80%); aspect-ratio: 4/5; object-fit: cover; border-radius: var(--r-lg); box-shadow: var(--sh-lg), var(--sh-glow); }
+.surprise__reveal-title { font-family: var(--font-display); font-size: var(--step-h2); margin: 0; color: var(--c-text); }
 .surprise__message { max-width: 34rem; color: var(--c-text-muted); font-weight: 300; margin: 0; }
 .confetti-canvas { position: fixed; inset: 0; z-index: 80; pointer-events: none; }
 
@@ -1104,7 +1203,7 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border-radius
 .footer__message {
   font-family: var(--font-display); font-weight: 500; font-size: var(--step-h2);
   margin: 0 auto 1.4rem; max-width: 30rem; line-height: 1.2;
-  background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--c-text);
 }
 .footer__signature { font-family: var(--font-script); font-size: clamp(2.2rem, 9vw, 3.4rem); color: var(--c-text); margin: 0 0 0.6rem; }
 .footer__meta { color: var(--c-text-muted); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 1.2rem; }

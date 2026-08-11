@@ -1,4 +1,5 @@
-﻿import { useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import type { SectionProps } from "../types";
 import { SectionShell, SectionHeading } from "../components/SectionShell";
 import { LazyImage } from "../components/LazyImage";
@@ -10,11 +11,12 @@ interface GalleryContent {
   kicker?: string;
   title?: string;
   subtitle?: string;
-  /** Either plain strings (src) or {src, title?, description?, objectPosition?} objects. */
   photos?: Array<
     string | { src: string; title?: string; description?: string; ratio?: string; objectPosition?: string }
   >;
 }
+
+interface CloneOffset { x: number; y: number; }
 
 export function GallerySection(props: SectionProps) {
   const c = (props.content ?? {}) as GalleryContent;
@@ -22,12 +24,34 @@ export function GallerySection(props: SectionProps) {
   const settings = props.section.settings ?? {};
   const mode = getSetting<string>(settings, "mode", "masonry");
   const carouselRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [cloneOffsets, setCloneOffsets] = useState<Record<number, CloneOffset>>({});
 
   const photos = (c.photos ?? []).map((p, i) =>
     typeof p === "string"
       ? { src: p, title: undefined, description: undefined, ratio: undefined, objectPosition: undefined, key: i }
       : { ...p, key: i }
   );
+
+  useLayoutEffect(() => {
+    const updateOffsets = () => {
+      const source = cardRefs.current[0];
+      if (!source) return;
+      const sourceRect = source.getBoundingClientRect();
+      const nextOffsets: Record<number, CloneOffset> = {};
+      cardRefs.current.forEach((card, index) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        nextOffsets[index] = { x: sourceRect.left - rect.left, y: sourceRect.top - rect.top };
+      });
+      setCloneOffsets(nextOffsets);
+    };
+
+    updateOffsets();
+    window.addEventListener("resize", updateOffsets, { passive: true });
+    return () => window.removeEventListener("resize", updateOffsets);
+  }, [mode, photos.length]);
+
   if (photos.length === 0) return null;
 
   const openAt = (i: number) => {
@@ -49,6 +73,16 @@ export function GallerySection(props: SectionProps) {
     el.scrollBy({ left: dir * (el.clientWidth * 0.8), behavior: "smooth" });
   };
 
+  const cloneMotion = (index: number) => {
+    const offset = cloneOffsets[index] ?? { x: 0, y: 0 };
+    return {
+      initial: { opacity: 0, x: offset.x, y: offset.y, scale: 0.72 },
+      whileInView: { opacity: 1, x: 0, y: 0, scale: 1 },
+      viewport: { once: true, amount: 0.16 },
+      transition: { type: "spring" as const, stiffness: 105, damping: 20, delay: index * 0.1 }
+    };
+  };
+
   return (
     <SectionShell section={props.section}>
       <SectionHeading kicker={c.kicker} title={c.title} subtitle={c.subtitle} />
@@ -56,46 +90,38 @@ export function GallerySection(props: SectionProps) {
       {mode === "carousel" ? (
         <div className="gallery-carousel-wrap">
           <div className="gallery-carousel" ref={carouselRef}>
-            {photos.map((p) => (
-              <LazyImage
-                key={p.key}
-                src={p.src}
-                alt={p.title ?? `Gallery photo ${p.key + 1}`}
-                className="gallery-carousel__item"
-                onClick={() => openAt(p.key)}
-                caption={p.title}
-              />
+            {photos.map((p, index) => (
+              <motion.div key={p.key} ref={(node) => { cardRefs.current[index] = node; }} {...cloneMotion(index)}>
+                <LazyImage
+                  src={p.src}
+                  alt={p.title ?? `Gallery photo ${p.key + 1}`}
+                  className="gallery-carousel__item"
+                  onClick={() => openAt(p.key)}
+                  caption={p.title}
+                />
+              </motion.div>
             ))}
           </div>
-          <button
-            type="button"
-            className="gallery-nav gallery-nav--prev"
-            onClick={() => scrollCarousel(-1)}
-            aria-label="Scroll gallery left"
-          >
+          <button type="button" className="gallery-nav gallery-nav--prev" onClick={() => scrollCarousel(-1)} aria-label="Scroll gallery left">
             <Icon name="chevronLeft" size={20} />
           </button>
-          <button
-            type="button"
-            className="gallery-nav gallery-nav--next"
-            onClick={() => scrollCarousel(1)}
-            aria-label="Scroll gallery right"
-          >
+          <button type="button" className="gallery-nav gallery-nav--next" onClick={() => scrollCarousel(1)} aria-label="Scroll gallery right">
             <Icon name="chevronRight" size={20} />
           </button>
         </div>
       ) : (
         <div className={mode === "masonry" ? "gallery masonry" : "gallery grid"}>
-          {photos.map((p) => (
-            <LazyImage
-              key={p.key}
-              src={p.src}
-              alt={p.title ?? `Gallery photo ${p.key + 1}`}
-              className="gallery__item"
-              aspectRatio={mode === "masonry" ? p.ratio ?? "3/4" : "1/1"}
-              onClick={() => openAt(p.key)}
-              caption={p.title}
-            />
+          {photos.map((p, index) => (
+            <motion.div key={p.key} ref={(node) => { cardRefs.current[index] = node; }} {...cloneMotion(index)}>
+              <LazyImage
+                src={p.src}
+                alt={p.title ?? `Gallery photo ${p.key + 1}`}
+                className="gallery__item"
+                aspectRatio={mode === "masonry" ? p.ratio ?? "3/4" : "1/1"}
+                onClick={() => openAt(p.key)}
+                caption={p.title}
+              />
+            </motion.div>
           ))}
         </div>
       )}

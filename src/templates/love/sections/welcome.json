@@ -19,6 +19,6 @@
     "kicker": "@welcome_kicker",
     "title": "@welcome_title",
     "subtitle": "@welcome_prompt",
-    "scrollHint": "softly, scroll"
+    "scrollHint": "softly scroll"
   }
 }

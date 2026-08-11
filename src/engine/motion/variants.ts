@@ -65,7 +65,7 @@ export function buildReveal(
   return {
     initial: hidden,
     whileInView: show,
-    viewport: { once: e.once ?? true, amount: e.viewAmount ?? 0.18 },
+    viewport: { once: e.once ?? true, amount: e.viewAmount ?? 0.3 },
     transition: { duration, delay: e.delay ?? 0, ease: EASE_MAP[e.ease ?? "easeOut"] ?? "easeOut" }
   };
 }
@@ -79,14 +79,13 @@ export function buildStagger(
   const preset = pickPreset(e, presets);
   const hidden = { ...preset.hidden, ...e.hidden };
   const show = { ...preset.show, ...e.show };
-  const stagger = e.stagger ?? 0.09;
+  const stagger = e.stagger ?? 0.08;
   return {
     container: {
       initial: "hidden" as unknown as Record<string, unknown>,
       whileInView: "show" as unknown as Record<string, unknown>,
       viewport: { once: e.once ?? true, amount: e.viewAmount ?? 0.12 },
-      transition: { duration: e.duration ?? 0.7, staggerChildren: stagger, delayChildren: e.staggerDelay ?? 0.05 },
-      variants: { hidden, show }
+      transition: { duration: e.duration ?? 0.85, staggerChildren: stagger, delayChildren: e.staggerDelay ?? 0.05 },      variants: { hidden, show }
     },
     item: {
       variants: { hidden, show }
