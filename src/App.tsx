@@ -3,6 +3,7 @@ import { loadTemplate } from "./templates/registry";
 import { TemplateHost } from "./engine";
 import type { TemplatePackage } from "./engine";
 import { Icon } from "./engine";
+import Portal from "./portal/Portal";
 
 /** Engine-level loading screen (template-agnostic). */
 function LoadingScreen({ label }: { label: string }) {
@@ -29,7 +30,21 @@ function LoadError({ message }: { message: string }) {
   );
 }
 
+/** Simple hash-based router. */
+function useHashRoute(): string {
+  const [hash, setHash] = useState(window.location.hash);
+
+  useEffect(() => {
+    const onHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  return hash;
+}
+
 export default function App() {
+  const hash = useHashRoute();
   const [pkg, setPkg] = useState<TemplatePackage | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -43,6 +58,12 @@ export default function App() {
     };
   }, []);
 
+  // Portal route
+  if (hash === "#/portal") {
+    return <Portal />;
+  }
+
+  // Default: greeting
   if (error) return <LoadError message={error} />;
   if (!pkg) return <LoadingScreen label="Preparing your experience" />;
 

@@ -14,6 +14,7 @@ import { LightboxProvider } from "./contexts/LightboxContext";
 import { SectionRenderer } from "./SectionRenderer";
 import { Particles } from "./components/Particles";
 import { Inspector } from "./components/Inspector";
+import { getOverrides, hasOverrides } from "../portal/storage";
 
 /** Map theme.json onto CSS custom properties. Changing theme = restyle. */
 export function themeVars(theme: ThemeConfig): Record<string, string> {
@@ -73,12 +74,14 @@ function extractYoutubeId(url: string): string | null {
 
 export function TemplateHost({ pkg }: { pkg: TemplatePackage }) {
   const [sections, setSections] = useState<SectionConfig[]>(pkg.sections);
-  const [fieldPatch, setFieldPatch] = useState<Record<string, unknown>>({});
+  const [fieldPatch, setFieldPatch] = useState<Record<string, unknown>>(() =>
+    hasOverrides() ? getOverrides() : {}
+  );
   const [inspectOpen, setInspectOpen] = useState(false);
 
   useEffect(() => {
     setSections(pkg.sections);
-    setFieldPatch({});
+    setFieldPatch(hasOverrides() ? getOverrides() : {});
   }, [pkg]);
 
   const fields = useMemo(
