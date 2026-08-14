@@ -34,11 +34,11 @@ body {
 .tpl {
   --c-bg-root: var(--c-bg);
   position: relative;
-  min-height: 100vh;
   background: var(--c-bg-root);
   color: var(--c-text);
   isolation: isolate;
   overscroll-behavior-y: none;
+  overflow-x: hidden;
 }
 
 ::selection { background: rgba(232, 182, 166, 0.35); color: #fff; }
@@ -1222,6 +1222,7 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border-radius
 
 /* ------------------------------------------------------------------ Footer */
 .footer-shell .section-shell__inner { text-align: center; }
+.footer-shell { padding-bottom: 4rem; }
 .footer { padding-top: 1rem; }
 .footer__kicker { font-family: var(--font-script); font-size: 1.7rem; color: var(--c-primary-soft); margin: 0 0 0.8rem; }
 .footer__message {

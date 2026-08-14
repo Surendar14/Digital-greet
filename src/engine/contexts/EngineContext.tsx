@@ -42,7 +42,7 @@ export function useEngineApi(pkg: TemplatePackage): EngineApi {
 
     // Re-read the target every frame: images may still load and shift
     // the page, so a snapshot taken at click time drifts and looks laggy.
-    const duration = 1300;
+    const duration = 900;
     const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
     const t0 = performance.now();
     let done = false;
