@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import type { SectionBackdrop as BackdropConfig } from "../types";
 import { prefersReducedMotion } from "../utils/resolve";
 
@@ -6,13 +6,6 @@ import { prefersReducedMotion } from "../utils/resolve";
 function ease(t: number): number {
   const x = Math.min(1, Math.max(0, t));
   return x * x * (3 - 2 * x);
-}
-
-export interface BackdropState {
-  opacity: number;
-  y: number;
-  scale: number;
-  blurIn: number;
 }
 
 /**
@@ -28,12 +21,7 @@ export interface BackdropState {
  */
 export function SectionBackdrop({ bg }: { bg?: BackdropConfig | string | null }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [state, setState] = useState<BackdropState>({
-    opacity: 0,
-    y: 0,
-    scale: 1.16,
-    blurIn: 8,
-  });
+  const imageRef = useRef<HTMLDivElement | null>(null);
   let config: BackdropConfig | null = null;
   if (typeof bg === "string") config = { image: bg };
   else if (bg && typeof bg === "object") config = bg;
@@ -41,34 +29,47 @@ export function SectionBackdrop({ bg }: { bg?: BackdropConfig | string | null })
 
   useEffect(() => {
     const element = ref.current;
-    if (!element) return;
+    const image = imageRef.current;
+    if (!element || !image) return;
     const reduce = prefersReducedMotion();
     let raf = 0;
     let isListening = false;
+    let lastOpacity = -1;
+    let lastY = Number.NaN;
+    let lastScale = Number.NaN;
+    const reset = () => {
+      lastOpacity = 0;
+      lastY = 0;
+      lastScale = 1.16;
+      element.style.opacity = "0";
+      image.style.transform = "translate3d(0, 0px, 0) scale(1.16)";
+    };
     const update = () => {
       raf = 0;
+      // Skip updates during programmatic scroll to prevent layout thrashing.
+      if ((window as unknown as Record<string, unknown>).__dgScrollLock) return;
       const rect = element.getBoundingClientRect();
       const vh = window.innerHeight || 1;
       if (rect.bottom < 0 || rect.top > vh) {
-        setState((s) =>
-          s.opacity === 0 && s.blurIn >= 8 ? s : { opacity: 0, y: 0, scale: 1.16, blurIn: 8 }
-        );
+        if (lastOpacity !== 0) reset();
         return;
       }
       const center = rect.top + rect.height / 2 - vh / 2;
       const spread = Math.max(vh * 0.92, rect.height * 0.5);
       const raw = Math.min(1, Math.max(0, 1 - Math.abs(center) / spread));
       const eased = ease(raw);
-      const y = reduce ? 0 : -center * 0.055;
+      const y = reduce ? 0 : -center * 0.02;
       const scale = 1.16 - eased * 0.1;
-      const blurIn = (1 - eased) * 8;
-      setState((s) =>
-        Math.abs(s.opacity - eased) < 0.0005 &&
-        Math.abs(s.y - y) < 0.5 &&
-        Math.abs(s.scale - scale) < 0.0005
-          ? s
-          : { opacity: eased, y, scale, blurIn }
-      );
+      if (
+        Math.abs(lastOpacity - eased) < 0.005 &&
+        Math.abs(lastY - y) < 2 &&
+        Math.abs(lastScale - scale) < 0.005
+      ) return;
+      lastOpacity = eased;
+      lastY = y;
+      lastScale = scale;
+      element.style.opacity = String(eased * peak);
+      image.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -98,9 +99,7 @@ export function SectionBackdrop({ bg }: { bg?: BackdropConfig | string | null })
         if (entry.isIntersecting) startListening();
         else {
           stopListening();
-          setState((s) =>
-            s.opacity === 0 && s.blurIn >= 8 ? s : { opacity: 0, y: 0, scale: 1.16, blurIn: 8 }
-          );
+          reset();
         }
       },
       { rootMargin: "100% 0px" }
@@ -122,13 +121,14 @@ export function SectionBackdrop({ bg }: { bg?: BackdropConfig | string | null })
       ref={ref}
       className="section-bg"
       aria-hidden="true"
-      style={{ opacity: state.opacity * peak }}
+      style={{ opacity: 0 }}
     >
       <div
+        ref={imageRef}
         className="section-bg__img"
         style={{
-          filter: `blur(${blur + state.blurIn}px)`,
-          transform: `translate3d(0, ${state.y}px, 0) scale(${state.scale})`,
+          filter: `blur(${blur}px)`,
+          transform: "translate3d(0, 0px, 0) scale(1.16)",
         }}
       >
         <img src={config.image} alt="" draggable={false} style={{ objectPosition: config.position }} />

@@ -88,7 +88,7 @@ body {
   overflow: hidden;
   pointer-events: none;
   opacity: 0;
-  will-change: opacity, transform, filter;
+  will-change: opacity, transform;
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,

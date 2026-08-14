@@ -76,14 +76,13 @@ export function Particles({ settings, className }: { settings?: ParticleSettings
         if (p.x < -8) p.x = w + 8;
         if (p.x > w + 8) p.x = -8;
         const alpha = p.a * (0.55 + 0.45 * Math.sin(p.tw)) * maxOpacity;
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-        grad.addColorStop(0, rgba(p.fade, alpha));
-        grad.addColorStop(1, rgba(p.fade, 0));
-        ctx.fillStyle = grad;
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = `rgb(${p.fade[0]},${p.fade[1]},${p.fade[2]})`;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.r * 2, 0, Math.PI * 2);
         ctx.fill();
       }
+      ctx.globalAlpha = 1;
       raf = requestAnimationFrame(step);
     };
 

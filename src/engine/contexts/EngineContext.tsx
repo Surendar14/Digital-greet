@@ -35,6 +35,11 @@ export function useEngineApi(pkg: TemplatePackage): EngineApi {
     const saved = root.style.scrollBehavior;
     root.style.scrollBehavior = "auto";
 
+    // Lock backdrop updates during programmatic scroll to prevent
+    // cascading getBoundingClientRect() calls across all sections.
+    const win = window as unknown as Record<string, unknown>;
+    win.__dgScrollLock = true;
+
     // Re-read the target every frame: images may still load and shift
     // the page, so a snapshot taken at click time drifts and looks laggy.
     const duration = 1300;
@@ -58,6 +63,7 @@ export function useEngineApi(pkg: TemplatePackage): EngineApi {
         frameRef.current = null;
       }
       cancelRef.current = null;
+      win.__dgScrollLock = false;
       if (root.style.scrollBehavior !== saved) root.style.scrollBehavior = saved;
     };
     cancelRef.current = stop;
