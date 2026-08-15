@@ -4,6 +4,7 @@ import { TemplateHost } from "./engine";
 import type { TemplatePackage } from "./engine";
 import { Icon } from "./engine";
 import Portal from "./portal/Portal";
+import FormPage from "./portal/FormPage";
 
 /** Engine-level loading screen (template-agnostic). */
 function LoadingScreen({ label }: { label: string }) {
@@ -57,6 +58,11 @@ export default function App() {
       alive = false;
     };
   }, []);
+
+  // Form route
+  if (hash === "#/form") {
+    return <FormPage />;
+  }
 
   // Portal route
   if (hash === "#/portal") {

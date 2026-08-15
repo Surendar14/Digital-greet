@@ -157,13 +157,35 @@
 }
 
 .portal__group-title {
-  margin: 0 0 1.2rem;
+  margin: 0 0 0.4rem;
   font-family: var(--font-display, serif);
   font-size: 1.35rem;
   font-weight: 500;
   color: var(--c-text, #f7f1ea);
   padding-bottom: 0.6rem;
   border-bottom: 1px solid var(--c-border, rgba(200,132,112,0.12));
+}
+
+.portal__group-desc {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: var(--c-text-muted, #b9a29a);
+  font-style: italic;
+}
+
+.portal__intro {
+  margin-bottom: 2rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: var(--r-md, 18px);
+  background: color-mix(in srgb, var(--c-surface, #150f13) 60%, transparent);
+  border: 1px solid var(--c-border, rgba(200,132,112,0.12));
+  color: var(--c-text-muted, #b9a29a);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.portal__intro strong {
+  color: var(--c-primary, #e9b8a6);
 }
 
 .portal__fields {
