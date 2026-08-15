@@ -252,6 +252,10 @@ body {
   padding: 7.5rem 1.5rem 5rem;
   text-align: center;
 }
+.hero--full-height {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
 .hero__bg, .hero__particles { position: absolute; inset: 0; overflow: hidden; }
 .hero__bg img, .hero__bg video { width: 100%; height: 100%; object-fit: cover; }
 .hero__bg-overlay { position: absolute; inset: 0; }
@@ -1311,7 +1315,7 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border-radius
 }
 
 @media (max-width: 520px) {
-  .hero { padding-top: 5.5rem; min-height: 100dvh; }
+  .hero { padding-top: 5.5rem; }
   .hero__hint { bottom: 1.5rem; }
   .hero__cta .tpl-btn { width: 100%; }
   .music-card { flex-direction: column; text-align: center; gap: 1rem; }

@@ -38,8 +38,7 @@ export function HeroSection(props: SectionProps) {
 
   return (
     <section
-      className="hero"
-      style={{ minHeight: fullHeight ? "100svh" : "auto" }}
+      className={`hero${fullHeight ? " hero--full-height" : ""}`}
       aria-label={props.section.label ?? c.kicker ?? "Hero"}
     >
       {(bgType === "image" || bgType === "auto") && c.image && (

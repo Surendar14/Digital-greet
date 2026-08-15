@@ -23,7 +23,7 @@ export function SectionShell({
   const styleObj: CSSProperties = {
     "--maxw": style.maxWidth ?? "680px",
     paddingBlock: style.paddingBlock,
-    minHeight: style.fullHeight ? "100svh" : style.minHeight,
+    minHeight: style.fullHeight ? "100dvh" : style.minHeight,
     color: style.textColor
   } as CSSProperties;
 
