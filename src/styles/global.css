@@ -36,9 +36,6 @@ body {
   position: relative;
   background: var(--c-bg-root);
   color: var(--c-text);
-  isolation: isolate;
-  overscroll-behavior-y: none;
-  overflow-x: hidden;
 }
 
 ::selection { background: rgba(232, 182, 166, 0.35); color: #fff; }
