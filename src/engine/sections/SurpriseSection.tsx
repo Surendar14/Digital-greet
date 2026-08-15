@@ -1,5 +1,5 @@
 ﻿import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { SectionProps } from "../types";
 import { SectionShell } from "../components/SectionShell";
 import { Confetti } from "../components/Confetti";
@@ -33,42 +33,31 @@ export function SurpriseSection(props: SectionProps) {
       {revealed && <Confetti key={burst} theme={engine.theme} duration={burst > 1 ? 2600 : 4200} />}
 
       <div className="surprise">
-        <AnimatePresence mode="wait">
-          {!revealed ? (
-            <motion.div
-              key="pre"
-              className="surprise__pre"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              {c.kicker && <p className="surprise__kicker">{c.kicker}</p>}
-              {c.title && <h2 className="surprise__title">{c.title}</h2>}
-              <Button size="lg" label={c.buttonLabel ?? "Reveal the surprise"} onClick={reveal} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="revealed"
-              className="surprise__revealed"
-              initial={{ opacity: 0, scale: 0.92, y: 24 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -16 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-            >
-              {c.image && (
-                <img className="surprise__image" src={c.image} alt="" loading="lazy" />
-              )}
-              {c.afterTitle && <h2 className="surprise__reveal-title">{c.afterTitle}</h2>}
-              {c.message && <p className="surprise__message">{c.message}</p>}
-              <Button
-                variant="ghost"
-                label={c.replayLabel ?? "Replay the magic"}
-                onClick={() => setRevealed(false)}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {!revealed ? (
+          <div className="surprise__pre">
+            {c.kicker && <p className="surprise__kicker">{c.kicker}</p>}
+            {c.title && <h2 className="surprise__title">{c.title}</h2>}
+            <Button size="lg" label={c.buttonLabel ?? "Reveal the surprise"} onClick={reveal} />
+          </div>
+        ) : (
+          <motion.div
+            className="surprise__revealed"
+            initial={{ opacity: 0, scale: 0.92, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+          >
+            {c.image && (
+              <img className="surprise__image" src={c.image} alt="" loading="lazy" />
+            )}
+            {c.afterTitle && <h2 className="surprise__reveal-title">{c.afterTitle}</h2>}
+            {c.message && <p className="surprise__message">{c.message}</p>}
+            <Button
+              variant="ghost"
+              label={c.replayLabel ?? "Replay the magic"}
+              onClick={() => setRevealed(false)}
+            />
+          </motion.div>
+        )}
       </div>
     </SectionShell>
   );
