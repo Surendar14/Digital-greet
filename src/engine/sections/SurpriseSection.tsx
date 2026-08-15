@@ -16,7 +16,7 @@ interface SurpriseContent {
   replayLabel?: string;
 }
 
-/** The finale — confetti, a big message, and a replay button. */
+/** The finale — confetti and a big message. */
 export function SurpriseSection(props: SectionProps) {
   const engine = useEngine();
   const c = (props.content ?? {}) as SurpriseContent;
@@ -30,7 +30,7 @@ export function SurpriseSection(props: SectionProps) {
 
   return (
     <SectionShell section={props.section} className="surprise-shell">
-      {revealed && <Confetti key={burst} theme={engine.theme} duration={burst > 1 ? 2600 : 4200} />}
+      {revealed && <Confetti key={burst} theme={engine.theme} duration={4200} />}
 
       <div className="surprise">
         {!revealed ? (
@@ -51,11 +51,6 @@ export function SurpriseSection(props: SectionProps) {
             )}
             {c.afterTitle && <h2 className="surprise__reveal-title">{c.afterTitle}</h2>}
             {c.message && <p className="surprise__message">{c.message}</p>}
-            <Button
-              variant="ghost"
-              label={c.replayLabel ?? "Replay the magic"}
-              onClick={() => setRevealed(false)}
-            />
           </motion.div>
         )}
       </div>
